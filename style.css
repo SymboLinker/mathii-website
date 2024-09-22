@@ -155,7 +155,7 @@ input[type="text"] {
   font-size: 2vh;
 }
 
-#perDot, #startDot, #dotSize, #areaSize {
+#subitizeTimePerDot, #subitizeTimeMin, #dotSize, #areaSize {
   height: 3vh;
   width: 6vh;
   font-size: 2vh;

@@ -1,10 +1,3 @@
-/*
-KOMMAGETALLEN IN JAVASCRIPT ZIJN ONNAUWKEURIG EN HIERDOOR ONGESCHIKT VOOR DEZE WEBSITE.
-OPLOSSING: DE VISUELE REPRESENTATIE AANPASSEN "ALSOF" HET EEN KOMMAGETAL OF VEELVOUD VAN EEN MACHT VAN TIEN IS,
-VIA HET INVOEGEN VAN EEN KOMMA AAN DE STRING WAARVAN DE PLAATS VIA EEN OMWEG BEREKEND WORDT.
-*/
-
-
 function makeExercisePrime(i) {
   var primeMin = document.getElementById("primeMin").value;
   var primeMax = document.getElementById("primeMax").value;
@@ -71,12 +64,12 @@ function showGrid() {
   showById('grid');
   makeInvisibleById('grid');
   showById('gridStuff');
-  var subitizeNumber = Number(document.getElementById('subitizeNumber').innerHTML);
-  var perDotTime = Number(document.getElementById("perDot").value);
-  var startDotTime = Number(document.getElementById("startDot").value);
-  var viewTime = perDotTime*subitizeNumber + startDotTime;
-  var startTime = 300;
-  var stopTime = 300 + viewTime;
+  let subitizeNumber = Number(document.getElementById('subitizeNumber').innerHTML);
+  let subitizeTimePerDot = Number(document.getElementById("subitizeTimePerDot").value);
+  let subitizeTimeMin = Number(document.getElementById("subitizeTimeMin").value);
+  let viewTime = subitizeTimePerDot*subitizeNumber + subitizeTimeMin;
+  let startTime = 300;
+  let stopTime = 300 + viewTime;
   setTimeout('makeVisibleById(\'grid\')',startTime);
   setTimeout('makeInvisibleById(\'grid\')',stopTime);
 }
@@ -90,9 +83,7 @@ function makeVisibleById (id) {
 function changeColorNight() {
   document.body.style.color = "white";
   document.body.style.background = "black";
-  var elts = document.getElementsByClassName("button");
-  for(var e = 0; e < elts.length; e++) { // For each element
-    var elt = elts[e];
+  for(let elt of document.getElementsByClassName("button")) {
     elt.style.background = 'black';
   }
 }
@@ -229,7 +220,7 @@ function makeBlind() {
     hideById(answer);
   }
   document.getElementById('blindEx1').style.display = '';
-  if (document.getElementById('geenBreuken').checked) {
+  if (document.getElementById('noFractions').checked) {
     var len = document.getElementById('blindEx1').innerHTML.length;
     setTimeout("hideById('blindEx1')",250*(len-2));
   } else {
@@ -249,7 +240,7 @@ function nextBlind() {
 
     var prefixBlindEx = 'blindEx';
     document.getElementById(prefixBlindEx + blindCount).style.display = '';
-    if (document.getElementById('geenBreuken').checked) {
+    if (document.getElementById('noFractions').checked) {
       var len = document.getElementById(prefixBlindEx + blindCount).innerHTML.length;
       setTimeout('hideBlind(' + prefixBlindEx + blindCount + ')',250*(len-2));
     } else {
@@ -285,15 +276,15 @@ function hideTimeQuestions() {
 }
 
 function startGetalGeheugen() {
-  var getalGeheugenAantalGetallen = document.getElementById("getalGeheugenAantalGetallen").value;
+  var numberMemorySetSize = document.getElementById("numberMemorySetSize").value;
 
   document.getElementById('timeCurrent').innerHTML = 0;
 
-  var getalGeheugenMin = Math.pow(10, document.getElementById("getalGeheugenMin").value-1) + 1;
-  var getalGeheugenMax = Math.pow(10, document.getElementById("getalGeheugenMax").value) - 1;
+  var numberMemoryMin = Math.pow(10, document.getElementById("numberMemoryMin").value-1) + 1;
+  var numberMemoryMax = Math.pow(10, document.getElementById("numberMemoryMax").value) - 1;
 
-  for (var i = 1; i <= getalGeheugenAantalGetallen; i++) {
-    var getalGeheugenGetal = getRandomArithmetic(getalGeheugenMin,getalGeheugenMax);
+  for (var i = 1; i <= numberMemorySetSize; i++) {
+    var getalGeheugenGetal = getRandomArithmetic(numberMemoryMin,numberMemoryMax);
     var prefix = 'timeQuestion';
     document.getElementById(prefix + i).innerHTML = getalGeheugenGetal;
   }
@@ -311,8 +302,8 @@ function volgendeGetalGeheugen() {
   console.log(timeCurrent);
 
   setTimeoutCurrent();
-  var getalGeheugenAantalGetallen = document.getElementById("getalGeheugenAantalGetallen").value;
-  if (Number(timeCurrent) === Number(getalGeheugenAantalGetallen)) {
+  var numberMemorySetSize = document.getElementById("numberMemorySetSize").value;
+  if (Number(timeCurrent) === Number(numberMemorySetSize)) {
     showById('checken');
     hideById('volgende');
   }
@@ -325,8 +316,8 @@ function setTimeoutCurrent() {
   setTimeout('hideById(' +"'"+ timeoutCurrent + "'"+ ')',2000);
 }
 function getalGeheugenChecken() {
-  var getalGeheugenAantalGetallen = document.getElementById("getalGeheugenAantalGetallen").value;
-  for (var i = 1; i <= Number(getalGeheugenAantalGetallen); i++) {
+  var numberMemorySetSize = document.getElementById("numberMemorySetSize").value;
+  for (var i = 1; i <= Number(numberMemorySetSize); i++) {
     var prefix = 'timeQuestion';
     var answer = prefix + i;
     showById(answer);
@@ -424,12 +415,12 @@ function getNumerator(b,aMin,aMax) {
 }
 
 function makeExerciseBreukenOptellen(i) {
-  var bdMin = document.getElementById("breukenOptellenBDmin").value;
-  var bdMax = document.getElementById("breukenOptellenBDmax").value;
-  var fMin = document.getElementById("breukenOptellenMin").value;
-  var fMax = document.getElementById("breukenOptellenMax").value;
+  var bdMin = document.getElementById("addFractionsBDmin").value;
+  var bdMax = document.getElementById("addFractionsBDmax").value;
+  var fMin = document.getElementById("addFractionsMin").value;
+  var fMax = document.getElementById("addFractionsMax").value;
 
-  var gehelenFilteren = document.getElementById("breukenGeheelFilterenOptellen").checked;
+  var gehelenFilteren = document.getElementById("addFractionsNoWhole").checked;
   var eenOfNulGehelen = !gehelenFilteren;
 
   if (eenOfNulGehelen) {
@@ -450,18 +441,18 @@ function makeExerciseBreukenOptellen(i) {
       b = getRandomArithmetic(bdMin,bdMax);
     }
     var a = b*getRandomArithmetic(fMin+1,fMax-1);
-    if (document.getElementById("breukenVereenvoudigen").checked && document.getElementById("geenGemixteBreuken").checked ) {
+    if (document.getElementById("simplifyFractions").checked && document.getElementById("noMixedFractions").checked ) {
       while (gcd(a,b) !==1) {
         a = b*getRandomArithmetic(fMin+1,fMax-1);
       }
     }
   } else {
     var a = getRandomArithmetic(fMin + 1, fMax * b - 1);
-    if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+    if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
       while (gcd(a,b) !== 1) {
         a = getRandomArithmetic(fMin + 1, fMax * b - 1);
       }
-    } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+    } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
       while (a % b === 0) {
         a = getRandomArithmetic(fMin + 1, fMax * b - 1);
       }
@@ -481,18 +472,18 @@ function makeExerciseBreukenOptellen(i) {
       d = getRandomArithmetic(bdMin,bdMax);
     }
     var c = d*getRandomArithmetic(fMin+1,fMax-1);
-    if (document.getElementById("breukenVereenvoudigen").checked && document.getElementById("geenGemixteBreuken").checked ) {
+    if (document.getElementById("simplifyFractions").checked && document.getElementById("noMixedFractions").checked ) {
       while (gcd(c,d) !==1) {
         c = d*getRandomArithmetic(fMin+1,fMax-1);
       }
     }
   } else {
     var c = getRandomArithmetic(fMin + 1, fMax * d - 1);
-    if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1) ) {
+    if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1) ) {
       while (gcd(c,d) !== 1) {
         c = getRandomArithmetic(fMin + 1, fMax * d - 1);
       }
-    } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1)) {
+    } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1)) {
       while (c % d === 0) {
         c = getRandomArithmetic(fMin + 1, fMax * d - 1);
       }
@@ -517,12 +508,12 @@ function makeExerciseBreukenOptellen(i) {
 }
 
 function makeExerciseBreukenAftrekken(i) {
-  var bdMin = document.getElementById("breukenAftrekkenBDmin").value;
-  var bdMax = document.getElementById("breukenAftrekkenBDmax").value;
-  var fMin = document.getElementById("breukenAftrekkenMin").value;
-  var fMax = document.getElementById("breukenAftrekkenMax").value;
+  var bdMin = document.getElementById("subtractFractionsBDmin").value;
+  var bdMax = document.getElementById("subtractFractionsBDmax").value;
+  var fMin = document.getElementById("subtractFractionsValuesMin").value;
+  var fMax = document.getElementById("subtractFractionsValuesMax").value;
 
-  var gehelenFilteren = document.getElementById("breukenGeheelFilterenAftrekken").checked;
+  var gehelenFilteren = document.getElementById("subtractFractionsNoWhole").checked;
   var eenOfNulGehelen = !gehelenFilteren;
 
   if (eenOfNulGehelen) {
@@ -543,18 +534,18 @@ function makeExerciseBreukenAftrekken(i) {
       b = getRandomArithmetic(bdMin,bdMax);
     }
     var a = b*getRandomArithmetic(fMin+1,fMax-1);
-    if (document.getElementById("breukenVereenvoudigen").checked && document.getElementById("geenGemixteBreuken").checked ) {
+    if (document.getElementById("simplifyFractions").checked && document.getElementById("noMixedFractions").checked ) {
       while (gcd(a,b) !==1) {
         a = b*getRandomArithmetic(fMin+1,fMax-1);
       }
     }
   } else {
     var a = getRandomArithmetic(fMin + 1, fMax * b - 1);
-    if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+    if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
       while (gcd(a,b) !== 1) {
         a = getRandomArithmetic(fMin + 1, fMax * b - 1);
       }
-    } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+    } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
       while (a % b === 0) {
         a = getRandomArithmetic(fMin + 1, fMax * b - 1);
       }
@@ -574,18 +565,18 @@ function makeExerciseBreukenAftrekken(i) {
       d = getRandomArithmetic(bdMin,bdMax);
     }
     var c = d*getRandomArithmetic(fMin+1,fMax-1);
-    if (document.getElementById("breukenVereenvoudigen").checked && document.getElementById("geenGemixteBreuken").checked ) {
+    if (document.getElementById("simplifyFractions").checked && document.getElementById("noMixedFractions").checked ) {
       while (gcd(c,d) !==1) {
         c = d*getRandomArithmetic(fMin+1,fMax-1);
       }
     }
   } else {
     var c = getRandomArithmetic(fMin + 1, fMax * d - 1);
-    if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1) ) {
+    if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1) ) {
       while (gcd(c,d) !== 1) {
         c = getRandomArithmetic(fMin + 1, fMax * d - 1);
       }
-    } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1)) {
+    } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1)) {
       while (c % d === 0) {
         c = getRandomArithmetic(fMin + 1, fMax * d - 1);
       }
@@ -609,14 +600,14 @@ function makeExerciseBreukenAftrekken(i) {
 }
 
 function makeExerciseBreukenVermenigvuldigen(i) {
-  var bdMin = document.getElementById("breukenVermenigvuldigenBDmin").value;
-  var bdMax = document.getElementById("breukenVermenigvuldigenBDmax").value;
-  var fMin = document.getElementById("breukenVermenigvuldigenMin").value;
-  var fMax = document.getElementById("breukenVermenigvuldigenMax").value;
+  var bdMin = document.getElementById("multiplyFractionsBDmin").value;
+  var bdMax = document.getElementById("multiplyFractionsBDmax").value;
+  var fMin = document.getElementById("multiplyFractionsValuesMin").value;
+  var fMax = document.getElementById("multiplyFractionsValuesMax").value;
 
-  var gehelenFilteren = document.getElementById("breukenGeheelFilterenVermenigvuldigen").checked;
-  var eenGehele = document.getElementById("breukenEenGeheleVermenigvuldigen").checked;
-  var eenOfNulGehelen = document.getElementById("breukenEenOfNulGehelenVermenigvuldigen").checked;
+  var gehelenFilteren = document.getElementById("multiplyFractionsNoWhole").checked;
+  var eenGehele = document.getElementById("multiplyFractionsOneWhole").checked;
+  var eenOfNulGehelen = document.getElementById("multiplyFractionsOneOrNoneWhole").checked;
 
   if (eenOfNulGehelen) {
     var eenGehele = (getRandomIntInclusive(0,1) < 1);
@@ -636,18 +627,18 @@ function makeExerciseBreukenVermenigvuldigen(i) {
       b = getRandomArithmetic(bdMin,bdMax);
     }
     var a = b*getRandomArithmetic(fMin+1,fMax-1);
-    if (document.getElementById("breukenVereenvoudigen").checked && document.getElementById("geenGemixteBreuken").checked ) {
+    if (document.getElementById("simplifyFractions").checked && document.getElementById("noMixedFractions").checked ) {
       while (gcd(a,b) !==1) {
         a = b*getRandomArithmetic(fMin+1,fMax-1);
       }
     }
   } else {
     var a = getRandomArithmetic(fMin + 1, fMax * b - 1);
-    if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+    if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
       while (gcd(a,b) !== 1) {
         a = getRandomArithmetic(fMin + 1, fMax * b - 1);
       }
-    } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+    } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
       while (a % b === 0) {
         a = getRandomArithmetic(fMin + 1, fMax * b - 1);
       }
@@ -667,18 +658,18 @@ function makeExerciseBreukenVermenigvuldigen(i) {
       d = getRandomArithmetic(bdMin,bdMax);
     }
     var c = d*getRandomArithmetic(fMin+1,fMax-1);
-    if (document.getElementById("breukenVereenvoudigen").checked && document.getElementById("geenGemixteBreuken").checked ) {
+    if (document.getElementById("simplifyFractions").checked && document.getElementById("noMixedFractions").checked ) {
       while (gcd(c,d) !==1) {
         c = d*getRandomArithmetic(fMin+1,fMax-1);
       }
     }
   } else {
     var c = getRandomArithmetic(fMin + 1, fMax * d - 1);
-    if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1) ) {
+    if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1) ) {
       while (gcd(c,d) !== 1) {
         c = getRandomArithmetic(fMin + 1, fMax * d - 1);
       }
-    } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1)) {
+    } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1)) {
       while (c % d === 0) {
         c = getRandomArithmetic(fMin + 1, fMax * d - 1);
       }
@@ -702,18 +693,18 @@ function makeExerciseBreukenVermenigvuldigen(i) {
 }
 
 function makeExerciseBreukenDelen(i) {
-  var abcdMax = document.getElementById("breukenDelenABCDmax").value;
+  var abcdMax = document.getElementById("fractionDivisionABCDmax").value;
 
-  var linkerGetalGeheel = document.getElementById("linkerGetalGeheel").checked;
-  var rechterGetalKleinerEen = document.getElementById("rechterGetalKleinerEen").checked;
+  var divideFractionsLeftNumberIsWhole = document.getElementById("divideFractionsLeftNumberIsWhole").checked;
+  var rightFractionIsSmallerThanOne = document.getElementById("rightFractionIsSmallerThanOne").checked;
 
-  if (linkerGetalGeheel) {
-    if (rechterGetalKleinerEen) {
+  if (divideFractionsLeftNumberIsWhole) {
+    if (rightFractionIsSmallerThanOne) {
       var b = 1;
       var a = getRandomArithmetic(1,abcdMax);
       var d = getRandomArithmetic(2,abcdMax);
       var c = getRandomArithmetic(1,d-1);
-      while (c % d === 0 || (document.getElementById("breukenVereenvoudigen").checked && gcd(c,d) !== 1)) {
+      while (c % d === 0 || (document.getElementById("simplifyFractions").checked && gcd(c,d) !== 1)) {
         c = getRandomArithmetic(1, d-1);
       }
     } else {
@@ -721,14 +712,14 @@ function makeExerciseBreukenDelen(i) {
       var a = getRandomArithmetic(1,abcdMax);
       var d = getRandomArithmetic(2,abcdMax);
       var c = getRandomArithmetic(1,abcdMax);
-      while (c % d === 0 || (document.getElementById("breukenVereenvoudigen").checked && gcd(c,d) !== 1)) {
+      while (c % d === 0 || (document.getElementById("simplifyFractions").checked && gcd(c,d) !== 1)) {
         c = getRandomArithmetic(1, abcdMax);
       }
     }
   } else {
 
-    var eenOfNulGehelen = document.getElementById("breukenEenOfNulGehelenDelen").checked;
-    var gehelenFilteren = document.getElementById("breukenGeheelFilterenDelen").checked;
+    var eenOfNulGehelen = document.getElementById("divideFractionsOneOrNoneWhole").checked;
+    var gehelenFilteren = document.getElementById("divideFractionsNoWhole").checked;
 
     if (eenOfNulGehelen) {
       var eenGehele = (getRandomIntInclusive(0,1) < 1);
@@ -744,7 +735,7 @@ function makeExerciseBreukenDelen(i) {
       //NumberOne smaller than one
       var b = getRandomArithmetic(2,abcdMax);
       var a = getRandomArithmetic(1,b-1);
-      if (document.getElementById("breukenVereenvoudigen").checked) {
+      if (document.getElementById("simplifyFractions").checked) {
         while (gcd(a,b) !== 1) {
           var a = getRandomArithmetic(1,b-1);
         }
@@ -755,11 +746,11 @@ function makeExerciseBreukenDelen(i) {
     } else {
       var b = getRandomArithmetic(2,abcdMax-1);
       var a = getRandomArithmetic(b, 2*abcdMax);
-      if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+      if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
         while (gcd(a,b) !== 1) {
           a = getRandomArithmetic(b, 2*abcdMax);
         }
-      } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 2)) {
+      } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 2)) {
           while (a % b === 0) {
             a = getRandomArithmetic(b, 2*abcdMax);
           }
@@ -771,7 +762,7 @@ function makeExerciseBreukenDelen(i) {
     if (getRandomIntInclusive(0,1) === 0 && !(wholeNumber === 2)) {
       var d = getRandomArithmetic(2,abcdMax);
       var c = getRandomArithmetic(1,d-1);
-      if (document.getElementById("breukenVereenvoudigen").checked) {
+      if (document.getElementById("simplifyFractions").checked) {
         while (gcd(c,d) !== 1) {
           var c = getRandomArithmetic(1,d-1);
         }
@@ -782,11 +773,11 @@ function makeExerciseBreukenDelen(i) {
     } else {
       var d = getRandomArithmetic(2,abcdMax-1);
       var c = getRandomArithmetic(d, abcdMax);
-      if (document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1)) {
+      if (document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1)) {
         while (gcd(c,d) !== 1) {
           c = getRandomArithmetic(d, abcdMax);
         }
-      } else if (!document.getElementById("breukenVereenvoudigen").checked && (gehelenFilteren || wholeNumber === 1)) {
+      } else if (!document.getElementById("simplifyFractions").checked && (gehelenFilteren || wholeNumber === 1)) {
         while (c % d === 0) {
           c = getRandomArithmetic(d, abcdMax);
         }
@@ -818,9 +809,9 @@ function cssFraction(a,b) {
   if (b < 0) {
     b = -b;
   }
-  if (document.getElementById("geenGemixteBreuken").checked || (a < b)) {
+  if (document.getElementById("noMixedFractions").checked || (a < b)) {
     var fraction = '<div class="frac"><span class="topWhite">' + a + '</span><span class="symbol">/</span><span class="bottom">' + b + '</span></div>'
-    } else if (a % b === 0 && document.getElementById("breukenVereenvoudigen").checked) {
+    } else if (a % b === 0 && document.getElementById("simplifyFractions").checked) {
       var fraction = a/b;
     } else {
       var whole = Math.floor(a/b);
@@ -837,30 +828,30 @@ function cssFraction(a,b) {
 }
 
 function makeExerciseOptellen(i) {
-  if (document.getElementById("welBreuken").checked) {
+  if (document.getElementById("yesFractions").checked) {
     makeExerciseBreukenOptellen(i);
   } else {
-    var userInputOptellenMin = document.getElementById("userInputOptellenMin").value;
-    var userInputOptellenMax = document.getElementById("userInputOptellenMax").value;
+    var addingMin = document.getElementById("addingMin").value;
+    var addingMax = document.getElementById("addingMax").value;
 
-    var optellenA = getRandomArithmetic(userInputOptellenMin,userInputOptellenMax);
-    var optellenB = getRandomArithmetic(userInputOptellenMin,userInputOptellenMax);
+    var optellenA = getRandomArithmetic(addingMin,addingMax);
+    var optellenB = getRandomArithmetic(addingMin,addingMax);
 
-    if (document.getElementById("welGroteGetallen").checked && document.getElementById("welKleineGetallen").checked) {
+    if (document.getElementById("yesLargeNumbers").checked && document.getElementById("yesSmallNumbers").checked) {
       var commaType = getRandomIntInclusive(1,2);
     }
 
-    if (!(document.getElementById("welGroteGetallen").checked || document.getElementById("welKleineGetallen").checked)) {
+    if (!(document.getElementById("yesLargeNumbers").checked || document.getElementById("yesSmallNumbers").checked)) {
       var optellenC = optellenA + optellenB;
       var verschuivingA = 0;
       var verschuivingB = 0;
       var verschuivingC = 0;
-    } else if (document.getElementById("welKleineGetallen").checked && !(document.getElementById("welGroteGetallen").checked) || commaType === 1) {
-      var kleineGetallenMin = document.getElementById("kleineGetallenMin").value;
-      var kleineGetallenMax = document.getElementById("kleineGetallenMax").value;
+    } else if (document.getElementById("yesSmallNumbers").checked && !(document.getElementById("yesLargeNumbers").checked) || commaType === 1) {
+      var smallNumbersMin = document.getElementById("smallNumbersMin").value;
+      var smallNumbersMax = document.getElementById("smallNumbersMax").value;
 
-      var kleineGetallenVerschuivingA = getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
-      var kleineGetallenVerschuivingB = getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
+      var kleineGetallenVerschuivingA = getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
+      var kleineGetallenVerschuivingB = getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
 
       if (kleineGetallenVerschuivingA <= kleineGetallenVerschuivingB) {
         var verschil = kleineGetallenVerschuivingB - kleineGetallenVerschuivingA;
@@ -878,11 +869,11 @@ function makeExerciseOptellen(i) {
         var verschuivingB = -kleineGetallenVerschuivingB;
         var verschuivingC = -kleineGetallenVerschuivingA;
       }
-    } else if (document.getElementById("welGroteGetallen").checked && !(document.getElementById("welKleineGetallen").checked) || commaType === 2) {
-      var groteGetallenMin = document.getElementById("groteGetallenMin").value;
-      var groteGetallenMax = document.getElementById("groteGetallenMax").value;
-      var groteGetallenVerschuivingA = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
-      var groteGetallenVerschuivingB = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
+    } else if (document.getElementById("yesLargeNumbers").checked && !(document.getElementById("yesSmallNumbers").checked) || commaType === 2) {
+      var largeNumbersMin = document.getElementById("largeNumbersMin").value;
+      var largeNumbersMax = document.getElementById("largeNumbersMax").value;
+      var groteGetallenVerschuivingA = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
+      var groteGetallenVerschuivingB = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
 
       if (groteGetallenVerschuivingB <= groteGetallenVerschuivingA) {
         var verschil = groteGetallenVerschuivingA - groteGetallenVerschuivingB;
@@ -909,30 +900,30 @@ function makeExerciseOptellen(i) {
 
 
 function makeExerciseAftrekken(i) {
-  if (document.getElementById("welBreuken").checked) {
+  if (document.getElementById("yesFractions").checked) {
     makeExerciseBreukenAftrekken(i);
   } else {
-    var userInputAftrekkenMin = document.getElementById("userInputAftrekkenMin").value;
-    var userInputAftrekkenMax = document.getElementById("userInputAftrekkenMax").value;
+    var subtractionMin = document.getElementById("subtractionMin").value;
+    var subtractionMax = document.getElementById("subtractionMax").value;
 
-    var aftrekkenA = getRandomArithmetic(userInputAftrekkenMin,userInputAftrekkenMax);
-    var aftrekkenB = getRandomArithmetic(userInputAftrekkenMin,userInputAftrekkenMax);
+    var aftrekkenA = getRandomArithmetic(subtractionMin,subtractionMax);
+    var aftrekkenB = getRandomArithmetic(subtractionMin,subtractionMax);
 
-    if (document.getElementById("welGroteGetallen").checked && document.getElementById("welKleineGetallen").checked) {
+    if (document.getElementById("yesLargeNumbers").checked && document.getElementById("yesSmallNumbers").checked) {
       var commaType = getRandomIntInclusive(1,2);
     }
 
-    if (!(document.getElementById("welGroteGetallen").checked || document.getElementById("welKleineGetallen").checked)) {
+    if (!(document.getElementById("yesLargeNumbers").checked || document.getElementById("yesSmallNumbers").checked)) {
       var aftrekkenC = aftrekkenA - aftrekkenB;
       var verschuivingA = 0;
       var verschuivingB = 0;
       var verschuivingC = 0;
-    } else if (document.getElementById("welKleineGetallen").checked && !(document.getElementById("welGroteGetallen").checked) || commaType === 1) {
-      var kleineGetallenMin = document.getElementById("kleineGetallenMin").value;
-      var kleineGetallenMax = document.getElementById("kleineGetallenMax").value;
+    } else if (document.getElementById("yesSmallNumbers").checked && !(document.getElementById("yesLargeNumbers").checked) || commaType === 1) {
+      var smallNumbersMin = document.getElementById("smallNumbersMin").value;
+      var smallNumbersMax = document.getElementById("smallNumbersMax").value;
 
-      var kleineGetallenVerschuivingA = getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
-      var kleineGetallenVerschuivingB = getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
+      var kleineGetallenVerschuivingA = getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
+      var kleineGetallenVerschuivingB = getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
 
       if (kleineGetallenVerschuivingA <= kleineGetallenVerschuivingB) {
         var verschil = kleineGetallenVerschuivingB - kleineGetallenVerschuivingA;
@@ -950,11 +941,11 @@ function makeExerciseAftrekken(i) {
         var verschuivingB = -kleineGetallenVerschuivingB;
         var verschuivingC = -kleineGetallenVerschuivingA;
       }
-    } else if (document.getElementById("welGroteGetallen").checked && !(document.getElementById("welKleineGetallen").checked) || commaType === 2) {
-      var groteGetallenMin = document.getElementById("groteGetallenMin").value;
-      var groteGetallenMax = document.getElementById("groteGetallenMax").value;
-      var groteGetallenVerschuivingA = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
-      var groteGetallenVerschuivingB = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
+    } else if (document.getElementById("yesLargeNumbers").checked && !(document.getElementById("yesSmallNumbers").checked) || commaType === 2) {
+      var largeNumbersMin = document.getElementById("largeNumbersMin").value;
+      var largeNumbersMax = document.getElementById("largeNumbersMax").value;
+      var groteGetallenVerschuivingA = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
+      var groteGetallenVerschuivingB = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
 
       if (groteGetallenVerschuivingB <= groteGetallenVerschuivingA) {
         var verschil = groteGetallenVerschuivingA - groteGetallenVerschuivingB;
@@ -972,25 +963,25 @@ function makeExerciseAftrekken(i) {
         var verschuivingC = groteGetallenVerschuivingA;
       }
     }
-    if (document.getElementById("aftrekkenCnonNegative").checked) {
+    if (document.getElementById("subtractionCnonNegative").checked) {
       while (aftrekkenC < 0) {
-        var aftrekkenA = getRandomArithmetic(userInputAftrekkenMin,userInputAftrekkenMax);
-        var aftrekkenB = getRandomArithmetic(userInputAftrekkenMin,userInputAftrekkenMax);
+        var aftrekkenA = getRandomArithmetic(subtractionMin,subtractionMax);
+        var aftrekkenB = getRandomArithmetic(subtractionMin,subtractionMax);
 
-        if (document.getElementById("welGroteGetallen").checked && document.getElementById("welKleineGetallen").checked) {
+        if (document.getElementById("yesLargeNumbers").checked && document.getElementById("yesSmallNumbers").checked) {
           var commaType = getRandomIntInclusive(1,2);
         }
-        if (!(document.getElementById("welGroteGetallen").checked || document.getElementById("welKleineGetallen").checked)) {
+        if (!(document.getElementById("yesLargeNumbers").checked || document.getElementById("yesSmallNumbers").checked)) {
           var aftrekkenC = aftrekkenA - aftrekkenB;
           var verschuivingA = 0;
           var verschuivingB = 0;
           var verschuivingC = 0;
-        } else if (document.getElementById("welKleineGetallen").checked && !(document.getElementById("welGroteGetallen").checked) || commaType === 1) {
-          var kleineGetallenMin = document.getElementById("kleineGetallenMin").value;
-          var kleineGetallenMax = document.getElementById("kleineGetallenMax").value;
+        } else if (document.getElementById("yesSmallNumbers").checked && !(document.getElementById("yesLargeNumbers").checked) || commaType === 1) {
+          var smallNumbersMin = document.getElementById("smallNumbersMin").value;
+          var smallNumbersMax = document.getElementById("smallNumbersMax").value;
 
-          var kleineGetallenVerschuivingA = getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
-          var kleineGetallenVerschuivingB = getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
+          var kleineGetallenVerschuivingA = getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
+          var kleineGetallenVerschuivingB = getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
 
           if (kleineGetallenVerschuivingA <= kleineGetallenVerschuivingB) {
             var verschil = kleineGetallenVerschuivingB - kleineGetallenVerschuivingA;
@@ -1008,11 +999,11 @@ function makeExerciseAftrekken(i) {
             var verschuivingB = -kleineGetallenVerschuivingB;
             var verschuivingC = -kleineGetallenVerschuivingA;
           }
-        } else if (document.getElementById("welGroteGetallen").checked && !(document.getElementById("welKleineGetallen").checked) || commaType === 2) {
-          var groteGetallenMin = document.getElementById("groteGetallenMin").value;
-          var groteGetallenMax = document.getElementById("groteGetallenMax").value;
-          var groteGetallenVerschuivingA = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
-          var groteGetallenVerschuivingB = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
+        } else if (document.getElementById("yesLargeNumbers").checked && !(document.getElementById("yesSmallNumbers").checked) || commaType === 2) {
+          var largeNumbersMin = document.getElementById("largeNumbersMin").value;
+          var largeNumbersMax = document.getElementById("largeNumbersMax").value;
+          var groteGetallenVerschuivingA = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
+          var groteGetallenVerschuivingB = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
 
           if (groteGetallenVerschuivingB <= groteGetallenVerschuivingA) {
             var verschil = groteGetallenVerschuivingA - groteGetallenVerschuivingB;
@@ -1040,48 +1031,48 @@ function makeExerciseAftrekken(i) {
 }
 
 function randomGroteOfKleineVerschuiving() {
-  var kleineGetallenMin = document.getElementById("kleineGetallenMin").value;
-  var kleineGetallenMax = document.getElementById("kleineGetallenMax").value;
-  var groteGetallenMin = document.getElementById("groteGetallenMin").value;
-  var groteGetallenMax = document.getElementById("groteGetallenMax").value;
+  var smallNumbersMin = document.getElementById("smallNumbersMin").value;
+  var smallNumbersMax = document.getElementById("smallNumbersMax").value;
+  var largeNumbersMin = document.getElementById("largeNumbersMin").value;
+  var largeNumbersMax = document.getElementById("largeNumbersMax").value;
 
   var randomGroterKleiner = getRandomIntInclusive(1,2);
   if (randomGroterKleiner === 1) {
-    return -getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
+    return -getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
   } else {
-    return getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
+    return getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
   }
 }
 
 function makeExerciseVermenigvuldigen(i) {
-  if (document.getElementById("welBreuken").checked) {
+  if (document.getElementById("yesFractions").checked) {
     makeExerciseBreukenVermenigvuldigen(i);
   } else {
-    var userInputVermenigvuldigenAmin = document.getElementById("userInputVermenigvuldigenAmin").value;
-    var userInputVermenigvuldigenAmax = document.getElementById("userInputVermenigvuldigenAmax").value;
-    var userInputVermenigvuldigenBmin = document.getElementById("userInputVermenigvuldigenBmin").value;
-    var userInputVermenigvuldigenBmax = document.getElementById("userInputVermenigvuldigenBmax").value;
+    var multiplyAmin = document.getElementById("multiplyAmin").value;
+    var multiplyAmax = document.getElementById("multiplyAmax").value;
+    var multiplyBmin = document.getElementById("multiplyBmin").value;
+    var multiplyBmax = document.getElementById("multiplyBmax").value;
 
-    var vermenigvuldigenA = getRandomArithmetic(userInputVermenigvuldigenAmin,userInputVermenigvuldigenAmax);
-    var vermenigvuldigenB = getRandomArithmetic(userInputVermenigvuldigenBmin,userInputVermenigvuldigenBmax);
+    var vermenigvuldigenA = getRandomArithmetic(multiplyAmin,multiplyAmax);
+    var vermenigvuldigenB = getRandomArithmetic(multiplyBmin,multiplyBmax);
     var vermenigvuldigenC = vermenigvuldigenA * vermenigvuldigenB;
 
-    if (!(document.getElementById("welGroteGetallen").checked || document.getElementById("welKleineGetallen").checked)) {
+    if (!(document.getElementById("yesLargeNumbers").checked || document.getElementById("yesSmallNumbers").checked)) {
       var verschuivingA = 0;
       var verschuivingB = 0;
 
-    } else if (document.getElementById("welKleineGetallen").checked && !(document.getElementById("welGroteGetallen").checked)) {
-      var kleineGetallenMin = document.getElementById("kleineGetallenMin").value;
-      var kleineGetallenMax = document.getElementById("kleineGetallenMax").value;
+    } else if (document.getElementById("yesSmallNumbers").checked && !(document.getElementById("yesLargeNumbers").checked)) {
+      var smallNumbersMin = document.getElementById("smallNumbersMin").value;
+      var smallNumbersMax = document.getElementById("smallNumbersMax").value;
 
-      var verschuivingA = -getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
-      var verschuivingB = -getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
-    } else if (document.getElementById("welGroteGetallen").checked && !(document.getElementById("welKleineGetallen").checked)) {
-      var groteGetallenMin = document.getElementById("groteGetallenMin").value;
-      var groteGetallenMax = document.getElementById("groteGetallenMax").value;
-      var verschuivingA = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
-      var verschuivingB = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
-    } else if (document.getElementById("welGroteGetallen").checked && document.getElementById("welKleineGetallen").checked) {
+      var verschuivingA = -getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
+      var verschuivingB = -getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
+    } else if (document.getElementById("yesLargeNumbers").checked && !(document.getElementById("yesSmallNumbers").checked)) {
+      var largeNumbersMin = document.getElementById("largeNumbersMin").value;
+      var largeNumbersMax = document.getElementById("largeNumbersMax").value;
+      var verschuivingA = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
+      var verschuivingB = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
+    } else if (document.getElementById("yesLargeNumbers").checked && document.getElementById("yesSmallNumbers").checked) {
       var verschuivingA = randomGroteOfKleineVerschuiving();
       var verschuivingB = randomGroteOfKleineVerschuiving();
     }
@@ -1121,34 +1112,34 @@ function cssFractionWholeNumbers(a,b) {
 }
 
 function makeExerciseDelen(i) {
-  if (document.getElementById("welBreuken").checked) {
+  if (document.getElementById("yesFractions").checked) {
     makeExerciseBreukenDelen(i);
   } else {
-    var delenAmin = document.getElementById("delenAmin").value;
-    var delenAmax = document.getElementById("delenAmax").value;
-    var delenBmin = document.getElementById("delenBmin").value;
-    var delenBmax = document.getElementById("delenBmax").value;
-    var delenCmin = document.getElementById("delenCmin").value;
-    var delenCmax = document.getElementById("delenCmax").value;
+    var dividingAmin = document.getElementById("dividingAmin").value;
+    var dividingAmax = document.getElementById("dividingAmax").value;
+    var dividingBmin = document.getElementById("dividingBmin").value;
+    var dividingBmax = document.getElementById("dividingBmax").value;
+    var dividingCmin = document.getElementById("dividingCmin").value;
+    var dividingCmax = document.getElementById("dividingCmax").value;
 
-    var delenCaantalDecimalen = document.getElementById("delenCaantalDecimalen").value;
+    var dividingCnumberOfDecimals = document.getElementById("dividingCnumberOfDecimals").value;
 
-    var kleineGetallenMin = document.getElementById("kleineGetallenMin").value;
-    var kleineGetallenMax = document.getElementById("kleineGetallenMax").value;
-    var groteGetallenMin = document.getElementById("groteGetallenMin").value;
-    var groteGetallenMax = document.getElementById("groteGetallenMax").value;
+    var smallNumbersMin = document.getElementById("smallNumbersMin").value;
+    var smallNumbersMax = document.getElementById("smallNumbersMax").value;
+    var largeNumbersMin = document.getElementById("largeNumbersMin").value;
+    var largeNumbersMax = document.getElementById("largeNumbersMax").value;
 
-    var delenB = getRandomArithmetic(delenBmin,delenBmax);
+    var delenB = getRandomArithmetic(dividingBmin,dividingBmax);
 
 
-    if (!(document.getElementById("welGroteGetallen").checked || document.getElementById("welKleineGetallen").checked)) {
-      if (document.getElementById("delenAwaardenGebruiken").checked) {
-        var delenA = getRandomArithmetic(delenAmin,delenAmax);
-        if (document.getElementById("delenCgeheel").checked) {
+    if (!(document.getElementById("yesLargeNumbers").checked || document.getElementById("yesSmallNumbers").checked)) {
+      if (document.getElementById("dividingSpecifyA").checked) {
+        var delenA = getRandomArithmetic(dividingAmin,dividingAmax);
+        if (document.getElementById("dividingCwhole").checked) {
           // A vervangen omdat random uitkomen op een gehele C een kleinere kans heeft bij een grote B of minder goed deelbare A
-          var delenCmin = Math.ceil(delenAmin/delenB);
-          var delenCmax = Math.floor(delenAmax/delenB);
-          var delenC = getRandomArithmetic(delenCmin,delenCmax);
+          var dividingCmin = Math.ceil(dividingAmin/delenB);
+          var dividingCmax = Math.floor(dividingAmax/delenB);
+          var delenC = getRandomArithmetic(dividingCmin,dividingCmax);
           var delenA = delenB * delenC;
 
           var prefixExercise = 'exercise';
@@ -1156,20 +1147,20 @@ function makeExerciseDelen(i) {
           var prefixAnswer = 'answer';
           document.getElementById(prefixAnswer + i).innerHTML = delenC;
 
-        } else if (document.getElementById("delenCmetRest").checked) {
-          var delenCgeheeldeel = Math.floor(delenA/delenB);
-          var delenCrest = delenA - delenB*delenCgeheeldeel;
+        } else if (document.getElementById("dividingCwithRemainder").checked) {
+          var dividingCwholedeel = Math.floor(delenA/delenB);
+          var delenCrest = delenA - delenB*dividingCwholedeel;
 
           var prefixExercise = 'exercise';
           document.getElementById(prefixExercise + i).innerHTML = delenA + " : " + delenB;
           var prefixAnswer = 'answer';
-          document.getElementById(prefixAnswer + i).innerHTML = delenCgeheeldeel + languageRest + delenCrest;
+          document.getElementById(prefixAnswer + i).innerHTML = dividingCwholedeel + languageRest + delenCrest;
 
-        } else if (document.getElementById("delenCmetDecimalen").checked) {
-          var nieuweA = delenA*Math.pow(10,delenCaantalDecimalen);
+        } else if (document.getElementById("dividingCwithDecimals").checked) {
+          var nieuweA = delenA*Math.pow(10,dividingCnumberOfDecimals);
           var nieuweC = Math.round(nieuweA/delenB);
-          var verschuivingA = -delenCaantalDecimalen;
-          var verschuivingC = -delenCaantalDecimalen;
+          var verschuivingA = -dividingCnumberOfDecimals;
+          var verschuivingC = -dividingCnumberOfDecimals;
           var verschuivingB = 0;
 
           var prefixExercise = 'exercise';
@@ -1184,8 +1175,8 @@ function makeExerciseDelen(i) {
 
         }
       } else { // C-waardeinstelling gebruiken bij de niet-KOMMAGROOT-instelling
-        if (document.getElementById("delenCgeheel").checked) {
-          var delenC = getRandomArithmetic(delenCmin,delenCmax);
+        if (document.getElementById("dividingCwhole").checked) {
+          var delenC = getRandomArithmetic(dividingCmin,dividingCmax);
           var delenA = delenB * delenC;
 
           var prefixExercise = 'exercise';
@@ -1193,36 +1184,36 @@ function makeExerciseDelen(i) {
           var prefixAnswer = 'answer';
           document.getElementById(prefixAnswer + i).innerHTML = delenC;
 
-        } else if (document.getElementById("delenCmetRest").checked) {
-          var delenAmin = delenB * delenCmin;
-          var delenAmax = delenB * delenCmax;
-          var delenA = getRandomArithmetic(delenAmin,delenAmax);
-          var delenCgeheeldeel = Math.floor(delenA/delenB);
-          var delenCrest = delenA - delenB*delenCgeheeldeel;
+        } else if (document.getElementById("dividingCwithRemainder").checked) {
+          var dividingAmin = delenB * dividingCmin;
+          var dividingAmax = delenB * dividingCmax;
+          var delenA = getRandomArithmetic(dividingAmin,dividingAmax);
+          var dividingCwholedeel = Math.floor(delenA/delenB);
+          var delenCrest = delenA - delenB*dividingCwholedeel;
           var prefixExercise = 'exercise';
           document.getElementById(prefixExercise + i).innerHTML = delenA + " : " + delenB;
           var prefixAnswer = 'answer';
-          document.getElementById(prefixAnswer + i).innerHTML = delenCgeheeldeel + languageRest + delenCrest;
+          document.getElementById(prefixAnswer + i).innerHTML = dividingCwholedeel + languageRest + delenCrest;
 
-        } else if (document.getElementById("delenCmetBreukRest").checked) {
-          var delenAmin = delenB * delenCmin;
-          var delenAmax = delenB * delenCmax;
-          var delenA = getRandomArithmetic(delenAmin,delenAmax);
+        } else if (document.getElementById("dividingCmixedFraction").checked) {
+          var dividingAmin = delenB * dividingCmin;
+          var dividingAmax = delenB * dividingCmax;
+          var delenA = getRandomArithmetic(dividingAmin,dividingAmax);
 
           var prefixExercise = 'exercise';
           document.getElementById(prefixExercise + i).innerHTML = '<div style="display:inline-block;font-size:3.8vh;position:relative;"> &nbsp </div>' + delenA + " : " + delenB;
           var prefixAnswer = 'answer';
           document.getElementById(prefixAnswer + i).innerHTML = cssFractionWholeNumbers(delenA,delenB);
 
-        } else if (document.getElementById("delenCmetDecimalen").checked) {
-          var delenAmin = delenB * delenCmin;
-          var delenAmax = delenB * delenCmax;
-          var delenA = getRandomArithmetic(delenAmin,delenAmax);
+        } else if (document.getElementById("dividingCwithDecimals").checked) {
+          var dividingAmin = delenB * dividingCmin;
+          var dividingAmax = delenB * dividingCmax;
+          var delenA = getRandomArithmetic(dividingAmin,dividingAmax);
 
-          var nieuweA = delenA*Math.pow(10,delenCaantalDecimalen);
+          var nieuweA = delenA*Math.pow(10,dividingCnumberOfDecimals);
           var nieuweC = Math.round(nieuweA/delenB);
-          var verschuivingA = -delenCaantalDecimalen;
-          var verschuivingC = -delenCaantalDecimalen;
+          var verschuivingA = -dividingCnumberOfDecimals;
+          var verschuivingC = -dividingCnumberOfDecimals;
           var verschuivingB = 0;
 
           var prefixExercise = 'exercise';
@@ -1233,27 +1224,27 @@ function makeExerciseDelen(i) {
         }
       } else { // met KOMMAGROOT-instellingen, alleen A en B worden gebruikt.
 
-        var delenA = getRandomArithmetic(delenAmin,delenAmax);
-        if (document.getElementById("welKleineGetallen").checked && !(document.getElementById("welGroteGetallen").checked)) {
-          var verschuivingA = -getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
-          var verschuivingB = -getRandomIntInclusive(kleineGetallenMin,kleineGetallenMax);
+        var delenA = getRandomArithmetic(dividingAmin,dividingAmax);
+        if (document.getElementById("yesSmallNumbers").checked && !(document.getElementById("yesLargeNumbers").checked)) {
+          var verschuivingA = -getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
+          var verschuivingB = -getRandomIntInclusive(smallNumbersMin,smallNumbersMax);
 
-        } else if (document.getElementById("welGroteGetallen").checked && !(document.getElementById("welKleineGetallen").checked)) {
-          var verschuivingA = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
-          var verschuivingB = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
+        } else if (document.getElementById("yesLargeNumbers").checked && !(document.getElementById("yesSmallNumbers").checked)) {
+          var verschuivingA = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
+          var verschuivingB = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
           var verschuivingC = verschuivingA - verschuivingB;
           while (verschuivingC < 0) {
-            var verschuivingA = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
-            var verschuivingB = getRandomIntInclusive(groteGetallenMin,groteGetallenMax);
+            var verschuivingA = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
+            var verschuivingB = getRandomIntInclusive(largeNumbersMin,largeNumbersMax);
             var verschuivingC = verschuivingA - verschuivingB;
           }
-        } else if (document.getElementById("welGroteGetallen").checked && document.getElementById("welKleineGetallen").checked) {
+        } else if (document.getElementById("yesLargeNumbers").checked && document.getElementById("yesSmallNumbers").checked) {
           var verschuivingA = randomGroteOfKleineVerschuiving();
           var verschuivingB = randomGroteOfKleineVerschuiving();
         }
-        var delenAtijdelijk = delenA * Math.pow(10,Number(delenCaantalDecimalen) + Number(verschuivingA) - Number(verschuivingB));
+        var delenAtijdelijk = delenA * Math.pow(10,Number(dividingCnumberOfDecimals) + Number(verschuivingA) - Number(verschuivingB));
         var delenC = Math.round(delenAtijdelijk/delenB);
-        var verschuivingC = - delenCaantalDecimalen;
+        var verschuivingC = - dividingCnumberOfDecimals;
 
         var prefixExercise = 'exercise';
         document.getElementById(prefixExercise + i).innerHTML = cleanNumber(returnLargerOrSmallerNumberAsString(delenA,verschuivingA)) + " : " + returnLargerOrSmallerNumberAsString(delenB,verschuivingB);
@@ -1264,7 +1255,7 @@ function makeExerciseDelen(i) {
 }
 
 function delenMetGrootOfKlein() {
-  if (document.getElementById("welGroteGetallen").checked || document.getElementById("welKleineGetallen").checked) {
+  if (document.getElementById("yesLargeNumbers").checked || document.getElementById("yesSmallNumbers").checked) {
     hideById('normaal 1');
     hideById('delenCwaarden');
     hideById('CinstellingNormaal');
@@ -1272,7 +1263,7 @@ function delenMetGrootOfKlein() {
     } else {
     showById('CinstellingNormaal');
     showById('normaal 1');
-    if (document.getElementById("delenCwaardenGebruiken").checked) {
+    if (document.getElementById("dividingSpecifyC").checked) {
     showById('delenCwaarden');
     hideById('delenAwaarden');
   } else {
@@ -1602,55 +1593,72 @@ function showButtons() {
 var settingKeys = [
   "primeMin",
   "primeMax",
-  "subitizeMin",
-  "subitizeMax",
-  "getalGeheugenAantalGetallen",
-  "getalGeheugenMax",
-  "getalGeheugenMin",
-  "breukenOptellenBDmin",
-  "breukenOptellenBDmax",
-  "breukenOptellenMin",
-  "breukenOptellenMax",
-  "breukenGeheelFilterenOptellen",
-  "breukenVereenvoudigen",
-  "geenGemixteBreuken",
-  "breukenDelenABCDmax",
-  "linkerGetalGeheel",
-  "rechterGetalKleinerEen",
-  "userInputOptellenMin",
-  "userInputOptellenMax",
-  "welBreuken",
-  "geenGemixteBreuken",
-  "welGroteGetallen",
-  "welKleineGetallen",
-  "kleineGetallenMin",
-  "kleineGetallenMax",
-  "groteGetallenMin",
-  "groteGetallenMax",
-  "userInputVermenigvuldigenAmin",
-  "userInputVermenigvuldigenAmax",
-  "userInputVermenigvuldigenBmin",
-  "userInputVermenigvuldigenBmax",
-  "delenAmin",
-  "delenAmax",
-  "delenBmin",
-  "delenBmax",
-  "delenCmin",
-  "delenCmax",
-  "delenCaantalDecimalen",
-  "delenCgeheel",
-  "delenCmetBreukRest",
-  "delenCmetDecimalen",
-  "delenCmetRest",
+  "numberMemorySetSize",
+  "numberMemoryMax",
+  "numberMemoryMin",
+  "addFractionsBDmin",
+  "addFractionsBDmax",
+  "addFractionsMin",
+  "addFractionsMax",
+  "addFractionsNoWhole",
+  "subtractFractionsBDmin",
+  "subtractFractionsBDmax",
+  "subtractFractionsValuesMin",
+  "subtractFractionsValuesMax",
+  "subtractFractionsNoWhole",
+  "multiplyFractionsBDmin",
+  "multiplyFractionsBDmax",
+  "multiplyFractionsValuesMin",
+  "multiplyFractionsValuesMax",
+  "multiplyFractionsOneWhole",
+  "multiplyFractionsOneOrNoneWhole",
+  "multiplyFractionsNoWhole",
+  "simplifyFractions",
+  "noMixedFractions",
+  "fractionDivisionABCDmax",
+  "divideFractionsLeftNumberIsWhole",
+  "rightFractionIsSmallerThanOne",
+  "divideFractionsNoWhole",
+  "divideFractionsOneOrNoneWhole",
+  "addingMin",
+  "addingMax",
+  "yesFractions",
+  "noFractions",
+  "yesLargeNumbers",
+  "noLargeNumbers",
+  "yesSmallNumbers",
+  "noSmallNumbers",
+  "smallNumbersMin",
+  "smallNumbersMax",
+  "largeNumbersMin",
+  "largeNumbersMax",
+  "multiplyAmin",
+  "multiplyAmax",
+  "multiplyBmin",
+  "multiplyBmax",
+  "dividingAmin",
+  "dividingAmax",
+  "dividingBmin",
+  "dividingBmax",
+  "dividingCmin",
+  "dividingCmax",
+  "dividingCnumberOfDecimals",
+  "dividingCwhole",
+  "dividingCmixedFraction",
+  "dividingCwithDecimals",
+  "dividingCwithRemainder",
   "gcdMax",
   "lcmMin",
   "lcmMax",
-  "delenAwaardenGebruiken",
-  "userInputAftrekkenMin",
-  "userInputAftrekkenMax",
-  "aftrekkenCnonNegative",
-  "perDot",
-  "startDot"
+  "dividingSpecifyA",
+  "dividingSpecifyC",
+  "subtractionMin",
+  "subtractionMax",
+  "subtractionCnonNegative",
+  "subitizeMin",
+  "subitizeMax",
+  "subitizeTimePerDot",
+  "subitizeTimeMin"
 ];
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -1684,5 +1692,7 @@ function displaySettingsUrl() {
       url += settingKey + '=' + element.value + '&';
     }
   }
-  alert(url.slice(0, -1));
+  let copyText = url.slice(0, -1);
+  navigator.clipboard.writeText(copyText);
+  alert('URL copied to clipboard:\n\n' + copyText);
 }

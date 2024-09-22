@@ -30,14 +30,14 @@
 
     <br/>
     <div id="home">
-      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('optellen','geenBreuken');showOnlyIfChecked('breukenOptellen','welBreuken');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">OPTELLEN</div>
-      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('aftrekken','geenBreuken');showOnlyIfChecked('breukenAftrekken','welBreuken');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">AFTREKKEN</div>
-      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('vermenigvuldigen','geenBreuken');showOnlyIfChecked('breukenVermenigvuldigen','welBreuken');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">VERMENIGVULDIGEN</div>
-      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('delen','geenBreuken');showOnlyIfChecked('breukenDelen','welBreuken');delenMetGrootOfKlein();showOnlyIfChecked('grootActief','welGroteGetallen');showOnlyIfChecked('kleinActief','welKleineGetallen');showOnlyIfChecked('blindActief','welBlind');">DELEN</div>
-      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('mix');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">MIX</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('optellen','noFractions');showOnlyIfChecked('breukenOptellen','yesFractions');showOnlyIfChecked('grootActief','yesLargeNumbers'); showOnlyIfChecked('kleinActief','yesSmallNumbers');">OPTELLEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('aftrekken','noFractions');showOnlyIfChecked('breukenAftrekken','yesFractions');showOnlyIfChecked('grootActief','yesLargeNumbers'); showOnlyIfChecked('kleinActief','yesSmallNumbers');">AFTREKKEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('vermenigvuldigen','noFractions');showOnlyIfChecked('breukenVermenigvuldigen','yesFractions');showOnlyIfChecked('grootActief','yesLargeNumbers'); showOnlyIfChecked('kleinActief','yesSmallNumbers');">VERMENIGVULDIGEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('delen','noFractions');showOnlyIfChecked('breukenDelen','yesFractions');delenMetGrootOfKlein();showOnlyIfChecked('grootActief','yesLargeNumbers');showOnlyIfChecked('kleinActief','yesSmallNumbers');showOnlyIfChecked('blindActief','welBlind');">DELEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('mix');showOnlyIfChecked('grootActief','yesLargeNumbers'); showOnlyIfChecked('kleinActief','yesSmallNumbers');">MIX</div>
       <br><br>
-      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('instellingGroteGetallen','welGroteGetallen');showOnlyIfChecked('instellingKleineGetallen','welKleineGetallen');showById('kommaEnGroot');hideById('grootActief'); hideById('kleinActief');hideById('blindActief');">KOMMA en GROOT</div>
-      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('instellingBreuken','welBreuken');showById('breukenSettings');hideById('grootActief'); hideById('kleinActief');">BREUKEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('instellingGroteGetallen','yesLargeNumbers');showOnlyIfChecked('instellingKleineGetallen','yesSmallNumbers');showById('kommaEnGroot');hideById('grootActief'); hideById('kleinActief');hideById('blindActief');">KOMMA en GROOT</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('instellingBreuken','yesFractions');showById('breukenSettings');hideById('grootActief'); hideById('kleinActief');">BREUKEN</div>
       <br><br>
       <div class="button prime" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('gcdSettings');hideById('grootActief'); hideById('kleinActief');showById('alsoTillFifteen');">GGD</div>
       <div class="button prime" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('lcmSettings');hideById('grootActief'); hideById('kleinActief');showById('alsoTillFifteen');">KGV</div>
@@ -71,13 +71,13 @@
           <br><br>
           <strong>Wil je oefenen met breuken?</strong>
           <br>
-          <input id='welBreuken' type="radio" name="breuken" value="ja" onClick="showOnlyIfChecked('instellingBreuken','welBreuken');checkBoxCheck('geenGroteGetallen');checkBoxCheck('geenKleineGetallen');"> Ja
-          <input id='geenBreuken' type="radio" name="breuken" value="nee" onClick="showOnlyIfChecked('instellingBreuken','welBreuken')" checked> Nee
+          <input id='yesFractions' type="radio" name="breuken" value="ja" onClick="showOnlyIfChecked('instellingBreuken','yesFractions');checkBoxCheck('noLargeNumbers');checkBoxCheck('noSmallNumbers');"> Ja
+          <input id='noFractions' type="radio" name="breuken" value="nee" onClick="showOnlyIfChecked('instellingBreuken','yesFractions')" checked> Nee
           <br><br><br>
           <div id="instellingBreuken" style="display:none;">
-            <input id="breukenVereenvoudigen"type="checkbox"> Geef altijd de vereenvoudigde vorm
+            <input id="simplifyFractions"type="checkbox"> Geef altijd de vereenvoudigde vorm
             <br>
-            <input id="geenGemixteBreuken"type="checkbox"> Toon altijd in de vorm <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div>
+            <input id="noMixedFractions"type="checkbox"> Toon altijd in de vorm <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div>
             <br><br>
             Merk op: beide checkboxen mogen onaangevinkt blijven.
           </div>
@@ -88,11 +88,11 @@
         <div id="breukenOptellen" class="settings">
           <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> + <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
           <br><br>
-          Noemers (B en D) van <input id="breukenOptellenBDmin" type="text" value="2"> t/m <input id="breukenOptellenBDmax" type="text" value="12">
+          Noemers (B en D) van <input id="addFractionsBDmin" type="text" value="2"> t/m <input id="addFractionsBDmax" type="text" value="12">
           <br>
-          Waarde van de breuk tussen  <input id="breukenOptellenMin" type="text" value="0"> en <input id="breukenOptellenMax" type="text" value="10">
+          Waarde van de breuk tussen  <input id="addFractionsMin" type="text" value="0"> en <input id="addFractionsMax" type="text" value="10">
           <br><br>
-          <input id="breukenGeheelFilterenOptellen"type="checkbox" checked> Geen gehele getallen
+          <input id="addFractionsNoWhole"type="checkbox" checked> Geen gehele getallen
           <br><br>
           <div id="gaBlindOptellen" class="button basic" onClick="makeExercisesOptellen(); hideById('settings'); showById('play');hideByClassName('play'); showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweOptellenBlind');makeBlind();">BLIND</div>
           <div id="gaOptellen" class="button basic"  onClick="makeExercisesOptellen(); hideById('settings');showById('play');hideByClassName('play');hideById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweOptellen');">GA!</div>
@@ -101,11 +101,11 @@
         <div id="breukenAftrekken" class="settings">
           <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> - <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
           <br><br>
-          Noemers (B en D) van <input id="breukenAftrekkenBDmin" type="text" value="2"> t/m <input id="breukenAftrekkenBDmax" type="text" value="12">
+          Noemers (B en D) van <input id="subtractFractionsBDmin" type="text" value="2"> t/m <input id="subtractFractionsBDmax" type="text" value="12">
           <br>
-          Waarde van de breuk tussen <input id="breukenAftrekkenMin" type="text" value="0"> en <input id="breukenAftrekkenMax" type="text" value="10">
+          Waarde van de breuk tussen <input id="subtractFractionsValuesMin" type="text" value="0"> en <input id="subtractFractionsValuesMax" type="text" value="10">
           <br><br>
-          <input id="breukenGeheelFilterenAftrekken"type="checkbox"> Geen gehele getallen
+          <input id="subtractFractionsNoWhole"type="checkbox"> Geen gehele getallen
           <br><br>
           <div id="gaBlindAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweAftrekkenBlind');makeBlind();">BLIND</div>
           <div id="gaAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');hideById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweAftrekken');hideById('aftrekken')">GA!</div>
@@ -114,16 +114,16 @@
         <div id="breukenVermenigvuldigen" class="settings">
           <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> x <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
           <br/><br/>
-          Noemers (B en D) van <input id="breukenVermenigvuldigenBDmin" type="text" value="2"> t/m <input id="breukenVermenigvuldigenBDmax" type="text" value="12">
+          Noemers (B en D) van <input id="multiplyFractionsBDmin" type="text" value="2"> t/m <input id="multiplyFractionsBDmax" type="text" value="12">
           <br>
-          Waarde van de breuk tussen <input id="breukenVermenigvuldigenMin" type="text" value="0"> en <input id="breukenVermenigvuldigenMax" type="text" value="10">
+          Waarde van de breuk tussen <input id="multiplyFractionsValuesMin" type="text" value="0"> en <input id="multiplyFractionsValuesMax" type="text" value="10">
           <br><br>
           <div class="instelOpsommmingKlein">
-            <input id="breukenEenGeheleVermenigvuldigen"type="radio" name="wholeVermenigvuldigen" value="1"> Een geheel getal
+            <input id="multiplyFractionsOneWhole"type="radio" name="wholeVermenigvuldigen" value="1"> Een geheel getal
             <br>
-            <input id="breukenEenOfNulGehelenVermenigvuldigen"type="radio" name="wholeVermenigvuldigen" value="1of0" checked> Een of twee breuken
+            <input id="multiplyFractionsOneOrNoneWhole"type="radio" name="wholeVermenigvuldigen" value="1of0" checked> Een of twee breuken
             <br>
-            <input id="breukenGeheelFilterenVermenigvuldigen"type="radio" name="wholeVermenigvuldigen" value="0"> Geen gehele getallen
+            <input id="multiplyFractionsNoWhole"type="radio" name="wholeVermenigvuldigen" value="0"> Geen gehele getallen
           </div>
           <br><br>
           <div id="gaBlindVermenigvuldigen" class="button basic" onClick="makeExercisesVermenigvuldigen(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweVermenigvuldigenBlind');makeBlind();">BLIND</div>
@@ -133,18 +133,18 @@
         <div id="breukenDelen" class="settings">
           <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> : <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
           <br/><br/>
-          B, C en D zijn maximaal <input id="breukenDelenABCDmax" type="text" value="12">
+          B, C en D zijn maximaal <input id="fractionDivisionABCDmax" type="text" value="12">
           <br><br>
           <div class="instelOpsommming">
-            <input id="linkerGetalGeheel" type="radio" name="wholeDelen" onClick="showById('rechterGetalKleinerEenSpan');"> Het linker getal is geheel
+            <input id="divideFractionsLeftNumberIsWhole" type="radio" name="wholeDelen" onClick="showById('rechterGetalKleinerEenSpan');"> Het linker getal is geheel
             <span id="rechterGetalKleinerEenSpan" style="display:none">
               <br>
-              &nbsp &nbsp <input id="rechterGetalKleinerEen" type="checkbox"> de rechter breuk is kleiner dan 1.
+              &nbsp &nbsp <input id="rightFractionIsSmallerThanOne" type="checkbox"> de rechter breuk is kleiner dan 1.
             </span>
             <br>
-            <input id="breukenEenOfNulGehelenDelen" type="radio" name="wholeDelen" value="1of0" onClick="hideById('rechterGetalKleinerEenSpan');" checked> Een of twee breuken
+            <input id="divideFractionsOneOrNoneWhole" type="radio" name="wholeDelen" value="1of0" onClick="hideById('rechterGetalKleinerEenSpan');" checked> Een of twee breuken
             <br>
-            <input id="breukenGeheelFilterenDelen" type="radio" name="wholeDelen" value="0" onClick="hideById('rechterGetalKleinerEenSpan');" > Geen gehele getallen
+            <input id="divideFractionsNoWhole" type="radio" name="wholeDelen" value="0" onClick="hideById('rechterGetalKleinerEenSpan');" > Geen gehele getallen
           </div>
           <br><br>
           <div id="gaBlindDelen" class="button basic" onClick="makeExercisesDelen();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweDelenBlind');makeBlind();">BLIND</div>
@@ -155,7 +155,7 @@
         <div id="optellen" class="settings">
           A + B = C
           <br/><br/>
-          A en B van <input id="userInputOptellenMin" type="text" value="10"> t/m <input id="userInputOptellenMax" type="text" value="1000">
+          A en B van <input id="addingMin" type="text" value="10"> t/m <input id="addingMax" type="text" value="1000">
           <br/><br/>
           <div id="gaBlindOptellen" class="button basic" onClick="makeExercisesOptellen(); hideById('settings'); showById('play');hideByClassName('play'); showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweOptellenBlind');makeBlind();">BLIND</div>
           <div id="gaOptellen" class="button basic"  onClick="makeExercisesOptellen(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweOptellen');">GA!</div>
@@ -163,9 +163,9 @@
 
         <div id="aftrekken" class="settings" style="display:none;"> A - B = C
           <br/><br/>
-          A en B van <input id="userInputAftrekkenMin" type="text" value="10"> t/m <input id="userInputAftrekkenMax" type="text" value="1000">
+          A en B van <input id="subtractionMin" type="text" value="10"> t/m <input id="subtractionMax" type="text" value="1000">
           <br/><br/>
-          <input id="aftrekkenCnonNegative" type="checkbox"> C niet-negatief
+          <input id="subtractionCnonNegative" type="checkbox"> C niet-negatief
           <br/><br/>
           <div id="gaBlindAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweAftrekkenBlind');makeBlind();">BLIND</div>
           <div id="gaAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweAftrekken');hideById('aftrekken')">GA!</div>
@@ -173,9 +173,9 @@
 
         <div id="vermenigvuldigen" class="settings" style="display:none;"> A x B = C
           <br/><br/>
-          A van <input id="userInputVermenigvuldigenAmin" type="text" value="2"> t/m <input id="userInputVermenigvuldigenAmax" type="text" value="9">
+          A van <input id="multiplyAmin" type="text" value="2"> t/m <input id="multiplyAmax" type="text" value="9">
           <br/>
-          B van <input id="userInputVermenigvuldigenBmin" type="text" value="2"> t/m <input id="userInputVermenigvuldigenBmax" type="text" value="1000">
+          B van <input id="multiplyBmin" type="text" value="2"> t/m <input id="multiplyBmax" type="text" value="1000">
           <br/><br/>
           <div id="gaBlindVermenigvuldigen" class="button basic" onClick="makeExercisesVermenigvuldigen(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweVermenigvuldigenBlind');makeBlind();">BLIND</div>
           <div id="gaVermenigvuldigen" class="button basic" onClick="makeExercisesVermenigvuldigen(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweVermenigvuldigen');hideById('vermenigvuldigen')">GA!</div>
@@ -184,21 +184,21 @@
         <div id="delen" class="settings" style="display:none;"> A : B = C
           <br/><br/>
           <span id="normaal 1"> Grenzen instellen voor
-            <input id='delenAwaardenGebruiken' type="radio" name="delenAC" value="delenAwaardenGebruiken" onClick="showById('delenAwaarden');hideById('delenCwaarden');"> A
-            of <input id='delenCwaardenGebruiken' type="radio" name="delenAC" value="delenCwaardenGebruiken" onClick="showById('delenCwaarden');hideById('delenAwaarden');" checked> C
+            <input id='dividingSpecifyA' type="radio" name="delenAC" value="dividingSpecifyA" onClick="showById('delenAwaarden');hideById('delenCwaarden');"> A
+            of <input id='dividingSpecifyC' type="radio" name="delenAC" value="dividingSpecifyC" onClick="showById('delenCwaarden');hideById('delenAwaarden');" checked> C
             <br>
           </span>
           <span id="delenAwaarden">
             <br/>
-            A van <input id="delenAmin" type="text" value="20"> t/m <input id="delenAmax" type="text" value="1000">
+            A van <input id="dividingAmin" type="text" value="20"> t/m <input id="dividingAmax" type="text" value="1000">
           </span>
 
           <br/>
-          B van <input id="delenBmin" type="text" value="2"> t/m <input id="delenBmax" type="text" value="9">
+          B van <input id="dividingBmin" type="text" value="2"> t/m <input id="dividingBmax" type="text" value="9">
           <br/>
 
           <span id="delenCwaarden">
-            C van <input id="delenCmin" type="text" value="2"> t/m <input id="delenCmax" type="text" value="100">
+            C van <input id="dividingCmin" type="text" value="2"> t/m <input id="dividingCmax" type="text" value="100">
             <br>
           </span>
           <span id="CinstellingTotaal">
@@ -206,19 +206,19 @@
             <span id='CinstellingNormaal'>
               Keuzes wat betreft C:
               <br>
-              <input id='delenCgeheel' type="radio" name="delenCinstelling" value="delenCgeheel" onClick="" checked> C geheel
+              <input id='dividingCwhole' type="radio" name="delenCinstelling" value="dividingCwhole" onClick="" checked> C geheel
               <br>
-              <input id='delenCmetRest' type="radio" name="delenCinstelling" value="delenCmetRest" onClick=""> C met rest
+              <input id='dividingCwithRemainder' type="radio" name="delenCinstelling" value="dividingCwithRemainder" onClick=""> C met rest
               <br>
-              <input id='delenCmetBreukRest' type="radio" name="delenCinstelling" value="delenCmetBreukRest" onClick=""> Met breuk als rest
+              <input id='dividingCmixedFraction' type="radio" name="delenCinstelling" value="dividingCmixedFraction" onClick=""> Met breuk als rest
               <br>
-              <input id='delenCmetDecimalen' type="radio" name="delenCinstelling" value="delenCmetDecimalen" onClick="">
+              <input id='dividingCwithDecimals' type="radio" name="delenCinstelling" value="dividingCwithDecimals" onClick="">
             </span>
-            C afronden op maximaal <input id="delenCaantalDecimalen" type="text" value="6"> decimalen
+            C afronden op maximaal <input id="dividingCnumberOfDecimals" type="text" value="6"> decimalen
           </span>
           <br/>
           <div id="gaBlindDelen" class="button basic" onClick="makeExercisesDelen();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweDelenBlind');makeBlind();">BLIND</div>
-          <div id="gaDelen" class="button basic" onClick="makeExercisesDelen(); hideById('settings');showById('play');hideByClassName('play');hideOnlyIfChecked('alsoTillFifteen','delenCmetBreukRest');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweDelen');">GA!</div>
+          <div id="gaDelen" class="button basic" onClick="makeExercisesDelen(); hideById('settings');showById('play');hideByClassName('play');hideOnlyIfChecked('alsoTillFifteen','dividingCmixedFraction');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweDelen');">GA!</div>
         </div>
 
         <div id="mix" class="settings" style="display:none;"> A ? B = C
@@ -227,7 +227,7 @@
           <br/>
           <br/>
           <div id="gaBlindMix" class="button basic" onClick="makeExercisesMix();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweMixBlind');makeBlind();">BLIND</div>
-          <div id="gaMix" class="button basic" onClick="makeExercisesMix(); hideById('settings');showById('play');hideByClassName('play');showOnlyIfChecked('alsoTillFifteen','geenBreuken');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweMix');">GA!</div>
+          <div id="gaMix" class="button basic" onClick="makeExercisesMix(); hideById('settings');showById('play');hideByClassName('play');showOnlyIfChecked('alsoTillFifteen','noFractions');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweMix');">GA!</div>
         </div>
 
         <div id="kommaEnGroot" class="settings"  style="display:none;">
@@ -235,26 +235,26 @@
           <br/><br/>
           <strong>Wil je oefenen met het rekenen met grote getallen met extra nullen?</strong>
           <br>
-          <input id='welGroteGetallen' type="radio" name="groteGetallen" value="ja" onClick="showOnlyIfChecked('instellingGroteGetallen','welGroteGetallen');checkBoxCheck('geenBreuken');"> Ja
-          <input id="geenGroteGetallen" type="radio" name="groteGetallen" value="nee" onClick="showOnlyIfChecked('instellingGroteGetallen','welGroteGetallen')" checked> Nee
+          <input id='yesLargeNumbers' type="radio" name="groteGetallen" value="ja" onClick="showOnlyIfChecked('instellingGroteGetallen','yesLargeNumbers');checkBoxCheck('noFractions');"> Ja
+          <input id="noLargeNumbers" type="radio" name="groteGetallen" value="nee" onClick="showOnlyIfChecked('instellingGroteGetallen','yesLargeNumbers')" checked> Nee
           <br><br>
           <div id="instellingGroteGetallen" class="content" style="display:none;">
             Geef A en B met
             <br>
-            minimaal <input id="groteGetallenMin" type="text" value="0"> en
-            maximaal <input id="groteGetallenMax" type="text" value="2"> nullen erachter.
+            minimaal <input id="largeNumbersMin" type="text" value="0"> en
+            maximaal <input id="largeNumbersMax" type="text" value="2"> nullen erachter.
           </div>
           <br/><br/>
           <strong>Wil je oefenen met getallen die ook cijfers achter de komma hebben?</strong>
           <br/>
-          <input id='welKleineGetallen' type="radio" name="kleineGetallen" value="ja" onClick="showOnlyIfChecked('instellingKleineGetallen','welKleineGetallen');checkBoxCheck('geenBreuken');"> Ja
-          <input type="radio" id="geenKleineGetallen" name="kleineGetallen" value="nee" onClick="showOnlyIfChecked('instellingKleineGetallen','welKleineGetallen');" checked> Nee
+          <input id='yesSmallNumbers' type="radio" name="kleineGetallen" value="ja" onClick="showOnlyIfChecked('instellingKleineGetallen','yesSmallNumbers');checkBoxCheck('noFractions');"> Ja
+          <input type="radio" id="noSmallNumbers" name="kleineGetallen" value="nee" onClick="showOnlyIfChecked('instellingKleineGetallen','yesSmallNumbers');" checked> Nee
           <br><br>
           <div id="instellingKleineGetallen" class="content" style="display:none;">
           Verschuif de komma van A en B
           <br>
-          minimaal <input id="kleineGetallenMin" type="text" value="0"> en
-          maximaal <input id="kleineGetallenMax" type="text" value="2"> plaatsen naar links.
+          minimaal <input id="smallNumbersMin" type="text" value="0"> en
+          maximaal <input id="smallNumbersMax" type="text" value="2"> plaatsen naar links.
           </div>
           <br/><br/>
           Ga terug naar de andere tabbladen om te oefenen met de nieuwe instellingen.
@@ -267,18 +267,18 @@
           en maximaal <input id="subitizeMax" type="text" value="10"> stippen.
           <br><br>
           <div class="instelOpsommmingKlein">
-            <span class="formula"> kijktijd = aantal stippen x <input id="perDot" type="text" value="100"> + <input id="startDot" type="text" value="-80"> (milliseconden)</span>
+            <span class="formula"> kijktijd = aantal stippen x <input id="subitizeTimePerDot" type="text" value="100"> + <input id="subitizeTimeMin" type="text" value="-80"> (milliseconden)</span>
           </div>
           <br><br>
           <div class="button special" id="subitizeStartButton" onClick="startSubitizing();showGrid();hideById('subitizeSettingsButton');showById('subitizeAgainButton');hideById('subitizeStartButton');hideById('subitizeNumber');showById('subitizeCheckButton');showById('subitizeNextButton'); hideById('settings');showById('play');hideByClassName('play');hideById('subitizeNumber');showGrid();showById('gridStuff');">START</div>
         </div>
 
         <div id='getalGeheugen' class="settings" style="display:none;">
-          Onthoud <input id="getalGeheugenAantalGetallen" type="text" value="3"> getallen van
+          Onthoud <input id="numberMemorySetSize" type="text" value="3"> getallen van
           <br>
-          minimaal <input id="getalGeheugenMin" type="text" value="6"> en
+          minimaal <input id="numberMemoryMin" type="text" value="6"> en
           <br>
-          maximaal <input id="getalGeheugenMax" type="text" value="6"> cijfers.
+          maximaal <input id="numberMemoryMax" type="text" value="6"> cijfers.
           <br><br>
           <div class="button special" onClick="hideById('settings');showById('play');hideByClassName('play');startGetalGeheugen();showById('timeStuff');hideByClassName('timeStuff');showById('startGetalGeheugen');showById('instellingGetalGeheugen');"> STEL IN </div>
         </div>

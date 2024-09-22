@@ -1,0 +1,432 @@
+<!DOCTYPE html lang='nl'>
+
+<html>
+
+  <head>
+    <title>mathii.com - oefen rekenvaardigheid via eigen instellingen! </title>
+    <meta name="description" content="Op mathii.com kun je zelf kiezen hoe groot de getallen zijn waarmee je rekent. Optellen, aftrekken, vermenigvuldigen, delen of een mix hiervan. Voor basisscholen, voortgezet onderwijs, hoger onderwijs en zelfstudie is deze website ideaal!">
+    <link href="../style.css" type="text/css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/dotsy@0.1.0/dist/dotsy.es2015-iife.min.js"></script>
+  </head>
+
+  <body>
+
+    <script src="../main.js"></script>
+    <script src="nl.js"></script>
+
+    <div id="colorButtons">
+      <div class="changeColorButton" id="changeColorDay" onClick="changeColorDay();"></div>
+      <div class="changeColorButton" id="changeColorNight" onClick="changeColorNight();"></div>
+      <div class="changeColorButton" id="changeColorStartup" onClick="changeColorStartup();"></div>
+    </div>
+
+    <div id="languages">
+      <a href="../nl" lang="nl" hreflang="nl">nl</a>
+      &nbsp &nbsp
+      <a href="./" lang="en" hreflang="en">en</a>
+    </div>
+
+    <div id="logo"><span id="logomath">math</span><span id="logoii">ii</span><span id="logocom">.com</span></div>
+
+    <br/>
+    <div id="home">
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('optellen','geenBreuken');showOnlyIfChecked('breukenOptellen','welBreuken');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">OPTELLEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('aftrekken','geenBreuken');showOnlyIfChecked('breukenAftrekken','welBreuken');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">AFTREKKEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('vermenigvuldigen','geenBreuken');showOnlyIfChecked('breukenVermenigvuldigen','welBreuken');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">VERMENIGVULDIGEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('delen','geenBreuken');showOnlyIfChecked('breukenDelen','welBreuken');delenMetGrootOfKlein();showOnlyIfChecked('grootActief','welGroteGetallen');showOnlyIfChecked('kleinActief','welKleineGetallen');showOnlyIfChecked('blindActief','welBlind');">DELEN</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('mix');showOnlyIfChecked('grootActief','welGroteGetallen'); showOnlyIfChecked('kleinActief','welKleineGetallen');">MIX</div>
+      <br><br>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('instellingGroteGetallen','welGroteGetallen');showOnlyIfChecked('instellingKleineGetallen','welKleineGetallen');showById('kommaEnGroot');hideById('grootActief'); hideById('kleinActief');hideById('blindActief');">KOMMA en GROOT</div>
+      <div class="button basic" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showOnlyIfChecked('instellingBreuken','welBreuken');showById('breukenSettings');hideById('grootActief'); hideById('kleinActief');">BREUKEN</div>
+      <br><br>
+      <div class="button prime" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('gcdSettings');hideById('grootActief'); hideById('kleinActief');showById('alsoTillFifteen');">GGD</div>
+      <div class="button prime" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('lcmSettings');hideById('grootActief'); hideById('kleinActief');showById('alsoTillFifteen');">KGV</div>
+      <div class="button prime" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('primeSettings');hideById('grootActief'); hideById('kleinActief');showById('alsoTillFifteen');">PRIEMFACTOREN</div>
+      <br><br>
+      <div class="button special" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('getalGeheugen');hideById('grootActief'); hideById('kleinActief');">GETALGEHEUGEN</div>
+      <div class="button special" onClick="hideById('home');showById('awayFromHome');hideByClassName('awayFromHome');showById('settings');hideByClassName('settings');showById('subitizeSettings');hideById('grootActief'); hideById('kleinActief');showById('subitizeStartButton')">SUBITIZEREN</div>
+      <br/><br/>
+      <div id="beschrijving">
+        <br> Op <strong>mathii.com</strong> kun je zelf kiezen hoe groot de getallen zijn waarmee je rekent. De website genereert random oefeningen met jouw instellingen.
+        <br>
+        <br> De vele combinaties van instellingen maken de website geschikt voor vele leerjaren.
+        <br>
+        <br> Op sommige websites moet je antwoorden intypen. Om je creatieve flow niet te belemmeren, kun je de antwoorden op mathii.com een voor een tevoorschijn klikken (maar ook allemaal in een keer).
+        <br>
+        <br> Heb je ook het onderdeel "GETALGEHEUGEN" al geprobeerd?
+        <br>
+        <br>
+        <br>
+        <br> contact: mathiiwebsite@gmail.com
+        <br>
+      </div>
+    </div>
+
+    <div id="awayFromHome" style="display:none">
+      <div class="button back" onClick="showById('home');hideById('awayFromHome');">terug</div>
+      <br><br>
+
+      <div class="awayFromHome" id="settings" style="display:none">
+
+        <div id="breukenSettings" class="settings"  style="display:none;">
+          Instellingen:
+          <br><br>
+          <strong>Wil je oefenen met breuken?</strong>
+          <br>
+          <input id='welBreuken' type="radio" name="breuken" value="ja" onClick="showOnlyIfChecked('instellingBreuken','welBreuken');checkBoxCheck('geenGroteGetallen');checkBoxCheck('geenKleineGetallen');"> Ja
+          <input id='geenBreuken' type="radio" name="breuken" value="nee" onClick="showOnlyIfChecked('instellingBreuken','welBreuken')" checked> Nee
+          <br><br><br>
+          <div id="instellingBreuken" style="display:none;">
+            <input id="breukenVereenvoudigen"type="checkbox"> Geef altijd de vereenvoudigde vorm
+            <br>
+            <input id="geenGemixteBreuken"type="checkbox"> Toon altijd in de vorm <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div>
+            <br><br>
+            Merk op: beide checkboxen mogen onaangevinkt blijven.
+          </div>
+          <br><br>
+          Ga terug naar de andere tabbladen om te oefenen met de nieuwe instellingen.
+        </div>
+
+        <div id="breukenOptellen" class="settings">
+          <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> + <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
+          <br><br>
+          Noemers (B en D) van <input id="breukenOptellenBDmin" type="text" value="2"> t/m <input id="breukenOptellenBDmax" type="text" value="12">
+          <br>
+          Waarde van de breuk tussen  <input id="breukenOptellenMin" type="text" value="0"> en <input id="breukenOptellenMax" type="text" value="10">
+          <br><br>
+          <input id="breukenGeheelFilterenOptellen"type="checkbox" checked> Geen gehele getallen
+          <br><br>
+          <div id="gaBlindOptellen" class="button basic" onClick="makeExercisesOptellen(); hideById('settings'); showById('play');hideByClassName('play'); showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweOptellenBlind');makeBlind();">BLIND</div>
+          <div id="gaOptellen" class="button basic"  onClick="makeExercisesOptellen(); hideById('settings');showById('play');hideByClassName('play');hideById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweOptellen');">GA!</div>
+        </div>
+
+        <div id="breukenAftrekken" class="settings">
+          <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> - <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
+          <br><br>
+          Noemers (B en D) van <input id="breukenAftrekkenBDmin" type="text" value="2"> t/m <input id="breukenAftrekkenBDmax" type="text" value="12">
+          <br>
+          Waarde van de breuk tussen <input id="breukenAftrekkenMin" type="text" value="0"> en <input id="breukenAftrekkenMax" type="text" value="10">
+          <br><br>
+          <input id="breukenGeheelFilterenAftrekken"type="checkbox"> Geen gehele getallen
+          <br><br>
+          <div id="gaBlindAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweAftrekkenBlind');makeBlind();">BLIND</div>
+          <div id="gaAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');hideById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweAftrekken');hideById('aftrekken')">GA!</div>
+        </div>
+
+        <div id="breukenVermenigvuldigen" class="settings">
+          <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> x <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
+          <br/><br/>
+          Noemers (B en D) van <input id="breukenVermenigvuldigenBDmin" type="text" value="2"> t/m <input id="breukenVermenigvuldigenBDmax" type="text" value="12">
+          <br>
+          Waarde van de breuk tussen <input id="breukenVermenigvuldigenMin" type="text" value="0"> en <input id="breukenVermenigvuldigenMax" type="text" value="10">
+          <br><br>
+          <div class="instelOpsommmingKlein">
+            <input id="breukenEenGeheleVermenigvuldigen"type="radio" name="wholeVermenigvuldigen" value="1"> Een geheel getal
+            <br>
+            <input id="breukenEenOfNulGehelenVermenigvuldigen"type="radio" name="wholeVermenigvuldigen" value="1of0" checked> Een of twee breuken
+            <br>
+            <input id="breukenGeheelFilterenVermenigvuldigen"type="radio" name="wholeVermenigvuldigen" value="0"> Geen gehele getallen
+          </div>
+          <br><br>
+          <div id="gaBlindVermenigvuldigen" class="button basic" onClick="makeExercisesVermenigvuldigen(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweVermenigvuldigenBlind');makeBlind();">BLIND</div>
+          <div id="gaVermenigvuldigen" class="button basic" onClick="makeExercisesVermenigvuldigen(); hideById('settings');showById('play');hideByClassName('play');hideById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweVermenigvuldigen');hideById('vermenigvuldigen')">GA!</div>
+        </div>
+
+        <div id="breukenDelen" class="settings">
+          <div class="frac"><span class="topWhite">A</span><span class="symbol">/</span><span class="bottom">B</span></div> : <div class="frac"><span class="topWhite">C</span><span class="symbol">/</span><span class="bottom">D</span></div>
+          <br/><br/>
+          B, C en D zijn maximaal <input id="breukenDelenABCDmax" type="text" value="12">
+          <br><br>
+          <div class="instelOpsommming">
+            <input id="linkerGetalGeheel" type="radio" name="wholeDelen" onClick="showById('rechterGetalKleinerEenSpan');"> Het linker getal is geheel
+            <span id="rechterGetalKleinerEenSpan" style="display:none">
+              <br>
+              &nbsp &nbsp <input id="rechterGetalKleinerEen" type="checkbox"> de rechter breuk is kleiner dan 1.
+            </span>
+            <br>
+            <input id="breukenEenOfNulGehelenDelen" type="radio" name="wholeDelen" value="1of0" onClick="hideById('rechterGetalKleinerEenSpan');" checked> Een of twee breuken
+            <br>
+            <input id="breukenGeheelFilterenDelen" type="radio" name="wholeDelen" value="0" onClick="hideById('rechterGetalKleinerEenSpan');" > Geen gehele getallen
+          </div>
+          <br><br>
+          <div id="gaBlindDelen" class="button basic" onClick="makeExercisesDelen();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweDelenBlind');makeBlind();">BLIND</div>
+          <div id="gaDelen" class="button basic" onClick="makeExercisesDelen(); hideById('settings');showById('play');hideByClassName('play');hideById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweDelen');">GA!</div>
+        </div>
+
+
+        <div id="optellen" class="settings">
+          A + B = C
+          <br/><br/>
+          A en B van <input id="userInputOptellenMin" type="text" value="10"> t/m <input id="userInputOptellenMax" type="text" value="1000">
+          <br/><br/>
+          <div id="gaBlindOptellen" class="button basic" onClick="makeExercisesOptellen(); hideById('settings'); showById('play');hideByClassName('play'); showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweOptellenBlind');makeBlind();">BLIND</div>
+          <div id="gaOptellen" class="button basic"  onClick="makeExercisesOptellen(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweOptellen');">GA!</div>
+        </div>
+
+        <div id="aftrekken" class="settings" style="display:none;"> A - B = C
+          <br/><br/>
+          A en B van <input id="userInputAftrekkenMin" type="text" value="10"> t/m <input id="userInputAftrekkenMax" type="text" value="1000">
+          <br/><br/>
+          <input id="aftrekkenCnonNegative"type="checkbox"> C niet-negatief
+          <br/><br/>
+          <div id="gaBlindAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweAftrekkenBlind');makeBlind();">BLIND</div>
+          <div id="gaAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweAftrekken');hideById('aftrekken')">GA!</div>
+        </div>
+
+        <div id="vermenigvuldigen" class="settings" style="display:none;"> A x B = C
+          <br/><br/>
+          A van <input id="userInputVermenigvuldigenAmin" type="text" value="2"> t/m <input id="userInputVermenigvuldigenAmax" type="text" value="9">
+          <br/>
+          B van <input id="userInputVermenigvuldigenBmin" type="text" value="2"> t/m <input id="userInputVermenigvuldigenBmax" type="text" value="1000">
+          <br/><br/>
+          <div id="gaBlindVermenigvuldigen" class="button basic" onClick="makeExercisesVermenigvuldigen(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises'); hideByClassName('blindNieuwe'); showById('nieuweVermenigvuldigenBlind');makeBlind();">BLIND</div>
+          <div id="gaVermenigvuldigen" class="button basic" onClick="makeExercisesVermenigvuldigen(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweVermenigvuldigen');hideById('vermenigvuldigen')">GA!</div>
+        </div>
+
+        <div id="delen" class="settings" style="display:none;"> A : B = C
+          <br/><br/>
+          <span id="normaal 1"> Grenzen instellen voor
+            <input id='delenAwaardenGebruiken' type="radio" name="delenAC" value="delenAwaardenGebruiken" onClick="showById('delenAwaarden');hideById('delenCwaarden');"> A
+            of <input id='delenCwaardenGebruiken' type="radio" name="delenAC" value="delenCwaardenGebruiken" onClick="showById('delenCwaarden');hideById('delenAwaarden');" checked> C
+            <br>
+          </span>
+          <span id="delenAwaarden">
+            <br/>
+            A van <input id="delenAmin" type="text" value="20"> t/m <input id="delenAmax" type="text" value="1000">
+          </span>
+
+          <br/>
+          B van <input id="delenBmin" type="text" value="2"> t/m <input id="delenBmax" type="text" value="9">
+          <br/>
+
+          <span id="delenCwaarden">
+            C van <input id="delenCmin" type="text" value="2"> t/m <input id="delenCmax" type="text" value="100">
+            <br>
+          </span>
+          <span id="CinstellingTotaal">
+            <br>
+            <span id='CinstellingNormaal'>
+              Keuzes wat betreft C:
+              <br>
+              <input id='delenCgeheel' type="radio" name="delenCinstelling" value="delenCgeheel" onClick="" checked> C geheel
+              <br>
+              <input id='delenCmetRest' type="radio" name="delenCinstelling" value="delenCmetRest" onClick=""> C met rest
+              <br>
+              <input id='delenCmetBreukRest' type="radio" name="delenCinstelling" value="delenCmetBreukRest" onClick=""> Met breuk als rest
+              <br>
+              <input id='delenCmetDecimalen' type="radio" name="delenCinstelling" value="delenCmetDecimalen" onClick="">
+            </span>
+            C afronden op maximaal <input id="delenCaantalDecimalen" type="text" value="6"> decimalen
+          </span>
+          <br/>
+          <div id="gaBlindDelen" class="button basic" onClick="makeExercisesDelen();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweDelenBlind');makeBlind();">BLIND</div>
+          <div id="gaDelen" class="button basic" onClick="makeExercisesDelen(); hideById('settings');showById('play');hideByClassName('play');hideOnlyIfChecked('alsoTillFifteen','delenCmetBreukRest');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweDelen');">GA!</div>
+        </div>
+
+        <div id="mix" class="settings" style="display:none;"> A ? B = C
+          <br/><br/>
+          Je krijgt een mix van opdrachten met jouw instellingen (uit de andere tabbladen).
+          <br/>
+          <br/>
+          <div id="gaBlindMix" class="button basic" onClick="makeExercisesMix();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweMixBlind');makeBlind();">BLIND</div>
+          <div id="gaMix" class="button basic" onClick="makeExercisesMix(); hideById('settings');showById('play');hideByClassName('play');showOnlyIfChecked('alsoTillFifteen','geenBreuken');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweMix');">GA!</div>
+        </div>
+
+        <div id="kommaEnGroot" class="settings"  style="display:none;">
+          Instellingen:
+          <br/><br/>
+          <strong>Wil je oefenen met het rekenen met grote getallen met extra nullen?</strong>
+          <br>
+          <input id='welGroteGetallen' type="radio" name="groteGetallen" value="ja" onClick="showOnlyIfChecked('instellingGroteGetallen','welGroteGetallen');checkBoxCheck('geenBreuken');"> Ja
+          <input id="geenGroteGetallen" type="radio" name="groteGetallen" value="nee" onClick="showOnlyIfChecked('instellingGroteGetallen','welGroteGetallen')" checked> Nee
+          <br><br>
+          <div id="instellingGroteGetallen" class="content" style="display:none;">
+            Geef A en B met
+            <br>
+            minimaal <input id="groteGetallenMin" type="text" value="0"> en
+            maximaal <input id="groteGetallenMax" type="text" value="2"> nullen erachter.
+          </div>
+          <br/><br/>
+          <strong>Wil je oefenen met getallen die ook cijfers achter de komma hebben?</strong>
+          <br/>
+          <input id='welKleineGetallen' type="radio" name="kleineGetallen" value="ja" onClick="showOnlyIfChecked('instellingKleineGetallen','welKleineGetallen');checkBoxCheck('geenBreuken');"> Ja
+          <input type="radio" id="geenKleineGetallen" name="kleineGetallen" value="nee" onClick="showOnlyIfChecked('instellingKleineGetallen','welKleineGetallen');" checked> Nee
+          <br><br>
+          <div id="instellingKleineGetallen" class="content" style="display:none;">
+          Verschuif de komma van A en B
+          <br>
+          minimaal <input id="kleineGetallenMin" type="text" value="0"> en
+          maximaal <input id="kleineGetallenMax" type="text" value="2"> plaatsen naar links.
+          </div>
+          <br/><br/>
+          Ga terug naar de andere tabbladen om te oefenen met de nieuwe instellingen.
+        </div>
+
+
+        <div id='subitizeSettings' class="settings" style="display:none;">
+          Oefen het subitizeren van minimaal <input id="subitizeMin" type="text" value="3">
+          <br>
+          en maximaal <input id="subitizeMax" type="text" value="10"> stippen.
+          <br><br>
+          <div class="instelOpsommmingKlein">
+            <span class="formula"> kijktijd = aantal stippen x <input id="perDot" type="text" value="100"> + <input id="startDot" type="text" value="-80"> (milliseconden)</span>
+          </div>
+          <br><br>
+          <div class="button special" id="subitizeStartButton" onClick="startSubitizing();showGrid();hideById('subitizeSettingsButton');showById('subitizeAgainButton');hideById('subitizeStartButton');hideById('subitizeNumber');showById('subitizeCheckButton');showById('subitizeNextButton'); hideById('settings');showById('play');hideByClassName('play');hideById('subitizeNumber');showGrid();showById('gridStuff');">START</div>
+        </div>
+
+        <div id='getalGeheugen' class="settings" style="display:none;">
+          Onthoud <input id="getalGeheugenAantalGetallen" type="text" value="3"> getallen van
+          <br>
+          minimaal <input id="getalGeheugenMin" type="text" value="6"> en
+          <br>
+          maximaal <input id="getalGeheugenMax" type="text" value="6"> cijfers.
+          <br><br>
+          <div class="button special" onClick="hideById('settings');showById('play');hideByClassName('play');startGetalGeheugen();showById('timeStuff');hideByClassName('timeStuff');showById('startGetalGeheugen');showById('instellingGetalGeheugen');"> STEL IN </div>
+        </div>
+
+        <div id="primeSettings" class="settings">
+          Geef de priemfactorontbinding van A.
+          <br/><br/>
+          A van <input id="primeMin" type="text" value="12"> t/m <input id="primeMax" type="text" value="100">
+          <br/><br/>
+          <div id="gaBlindPrime" class="button prime" onClick="makeExercisesPrime();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuwePrimeBlind');makeBlind();">BLIND</div>
+          <div id="gaPrime" class="button prime"  onClick="makeExercisesPrime(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuwePrime');">GA!</div>
+        </div>
+
+        <div id="gcdSettings" class="settings">
+          ggd(A, B) = C
+          <br/><br/>
+          A en B van 1 t/m <input id="gcdMax" type="text" value="100">
+          <br/><br/>
+          <div id="gaBlindGcd" class="button prime" onClick="makeExercisesGcd();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweGcdBlind');makeBlind();">BLIND</div>
+          <div id="gaGcd" class="button prime"  onClick="makeExercisesGcd(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweGcd');">GA!</div>
+        </div>
+
+        <div id="lcmSettings" class="settings">
+          kgv(A, B) = C
+          <br/><br/>
+          A en B van <input id="lcmMin" type="text" value="2"> t/m <input id="lcmMax" type="text" value="15">
+          <br/><br/>
+          <div id="gaBlindLcm" class="button prime" onClick="makeExercisesLcm();hideById('settings');showById('play');hideByClassName('play'); showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweLcmBlind');makeBlind();">BLIND</div>
+          <div id="gaLcm" class="button prime"  onClick="makeExercisesLcm(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweLcm');">GA!</div>
+        </div>
+
+        <div id="grootActief" style="display:none">
+          De instellingen voor GROTE getallen zijn actief.
+        </div>
+        <div id="kleinActief" style="display:none">
+          De instellingen voor KOMMAgetallen zijn actief.
+        </div>
+      </div>
+
+      <div class="awayFromHome" id="play" style="display:none">
+
+        <div class="play" id="exercises" style="display:none;">
+          <span id="exercise1"></span> = <span id="answer1" style="display:none"></span><div class="minibutton hide" id="ansBut1" onClick="showAnswer(1); hideButton(1);"></div><br/>
+          <span id="exercise2"></span> = <span id="answer2" style="display:none"></span><div class="minibutton hide" id="ansBut2" onClick="showAnswer(2); hideButton(2);"></div><br/>
+          <span id="exercise3"></span> = <span id="answer3" style="display:none"></span><div class="minibutton hide" id="ansBut3" onClick="showAnswer(3); hideButton(3);"></div><br/>
+          <span id="exercise4"></span> = <span id="answer4" style="display:none"></span><div class="minibutton hide" id="ansBut4" onClick="showAnswer(4); hideButton(4);"></div><br/>
+          <span id="exercise5"></span> = <span id="answer5" style="display:none"></span><div class="minibutton hide" id="ansBut5" onClick="showAnswer(5); hideButton(5);"></div><br/>
+          <span id="exercise6"></span> = <span id="answer6" style="display:none"></span><div class="minibutton hide" id="ansBut6" onClick="showAnswer(6); hideButton(6);"></div><br/>
+          <span id="exercise7"></span> = <span id="answer7" style="display:none"></span><div class="minibutton hide" id="ansBut7" onClick="showAnswer(7); hideButton(7);"></div><br/>
+          <span id="exercise8"></span> = <span id="answer8" style="display:none"></span><div class="minibutton hide" id="ansBut8" onClick="showAnswer(8); hideButton(8);"></div><br/>
+          <span id="exercise9"></span> = <span id="answer9" style="display:none"></span><div class="minibutton hide" id="ansBut9" onClick="showAnswer(9); hideButton(9);"></div><br/>
+          <span id="exercise10"></span> = <span id="answer10" style="display:none"></span><div class="minibutton hide" id="ansBut10" onClick="showAnswer(10); hideButton(10);"></div><br/>
+          <span id="exercise11"></span> = <span id="answer11" style="display:none"></span><div class="minibutton hide" id="ansBut11" onClick="showAnswer(11); hideButton(11);"></div><br/>
+          <span id="alsoTillFifteen">
+          <span id="exercise12"></span> = <span id="answer12" style="display:none"></span><div class="minibutton hide" id="ansBut12" onClick="showAnswer(12); hideButton(12);"></div><br/>
+          <span id="exercise13"></span> = <span id="answer13" style="display:none"></span><div class="minibutton hide" id="ansBut13" onClick="showAnswer(13); hideButton(13);"></div><br/>
+          <span id="exercise14"></span> = <span id="answer14" style="display:none"></span><div class="minibutton hide" id="ansBut14" onClick="showAnswer(14); hideButton(14);"></div><br/>
+          <span id="exercise15"></span> = <span id="answer15" style="display:none"></span><div class="minibutton hide" id="ansBut15" onClick="showAnswer(15); hideButton(15);"></div><br/>
+          </span>
+          <br/>
+          <div class="button check" onClick="showAnswers();hideButtons()">ANTWOORDEN</div>
+          <div id="nieuweOptellen" class="nieuwe button next" onClick="makeExercisesOptellen(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <div id="nieuweAftrekken" class="nieuwe button next" onClick="makeExercisesAftrekken(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <div id="nieuweVermenigvuldigen" class="nieuwe button next" onClick="makeExercisesVermenigvuldigen(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <div id="nieuweDelen" class="nieuwe button next" onClick="makeExercisesDelen(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <div id="nieuweMix" class="nieuwe button next" onClick="makeExercisesMix(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <div id="nieuweGcd" class="nieuwe button next" onClick="makeExercisesGcd(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <div id="nieuweLcm" class="nieuwe button next" onClick="makeExercisesLcm(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <div id="nieuwePrime" class="nieuwe button next" onClick="makeExercisesPrime(); hideAnswers(); showButtons()">NIEUWE SET</div>
+          <br/><br/>
+        </div>
+
+        <div class="play" id="blindExercises">
+          <span id="blindCount" style="display:none"></span>
+          <br>
+          <span id="blindEx1"></span><span id="blindAns1"></span>
+          <span id="blindEx2"></span><span id="blindAns2"></span>
+          <span id="blindEx3"></span><span id="blindAns3"></span>
+          <span id="blindEx4"></span><span id="blindAns4"></span>
+          <span id="blindEx5"></span><span id="blindAns5"></span>
+          <span id="blindEx6"></span><span id="blindAns6"></span>
+          <span id="blindEx7"></span><span id="blindAns7"></span>
+          <span id="blindEx8"></span><span id="blindAns8"></span>
+          <span id="blindEx9"></span><span id="blindAns9"></span>
+          <span id="blindEx10"></span><span id="blindAns10"></span>
+          <span id="blindEx11"></span><span id="blindAns11"></span>
+          <span id="blindEx12"></span><span id="blindAns12"></span>
+          <span id="blindEx13"></span><span id="blindAns13"></span>
+          <span id="blindEx14"></span><span id="blindAns14"></span>
+          <span id="blindEx15"></span><span id="blindAns15"></span>
+          <br><br><br>
+          <div class="button check" onClick="setTimeout('showBlind()',800);">ANTWOORD</div>
+          <div id="nieuweOptellenBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesOptellen();">VOLGENDE</div>
+          <div id="nieuweAftrekkenBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesAftrekken();">VOLGENDE</div>
+          <div id="nieuweVermenigvuldigenBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesVermenigvuldigen();">VOLGENDE</div>
+          <div id="nieuweDelenBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesDelen();">VOLGENDE</div>
+          <div id="nieuweMixBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesMix();">VOLGENDE</div>
+          <div id="nieuweGcdBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesGcd();">VOLGENDE</div>
+          <div id="nieuweLcmBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesLcm();">VOLGENDE</div>
+          <div id="nieuwePrimeBlind" class="blindNieuwe button next" onClick="nextBlind();makeExercisesPrime();">VOLGENDE</div>
+          <br><br>
+        </div>
+
+        <div class="play" id="timeStuff" style="display:none;">
+          <span id="timeCurrent" style="display:none"></span><br>
+          <span id="timeQuestion1" style="display:none"></span>
+          <span id="timeQuestion2" style="display:none"></span>
+          <span id="timeQuestion3" style="display:none"></span>
+          <span id="timeQuestion4" style="display:none"></span>
+          <span id="timeQuestion5" style="display:none"></span>
+          <span id="timeQuestion6" style="display:none"></span>
+          <span id="timeQuestion7" style="display:none"></span>
+          <span id="timeQuestion8" style="display:none"></span>
+          <span id="timeQuestion9" style="display:none"></span>
+          <span id="timeQuestion10" style="display:none"></span>
+          <span id="timeQuestion11" style="display:none"></span>
+          <span id="timeQuestion12" style="display:none"></span>
+          <span id="timeQuestion13" style="display:none"></span>
+          <span id="timeQuestion14" style="display:none"></span>
+          <span id="timeQuestion15" style="display:none"></span>
+          <br><br><br>
+          <div class="timeStuff button special" id="instellingGetalGeheugen" onClick="hideById('play');showById('settings');hideByClassname('settings');showById('getalGeheugen');">INSTELLINGEN</div>
+          <div class="timeStuff button special" id="startGetalGeheugen" onClick="volgendeGetalGeheugen();hideByClassName('timeStuff');showById('nogEens');showById('volgende');">START</div>
+          <div class="timeStuff button special" id="nogEens" onClick="setTimeoutCurrent();">NOG EENS</div>
+          <div class="timeStuff button next" id="volgende" onClick="volgendeGetalGeheugen();">VOLGENDE</div>
+          <div class="timeStuff button check" id="checken" onClick="hideByClassName('timeStuff');setTimeout('getalGeheugenChecken()',2000);setTimeout('showById(\'instellingGetalGeheugen\')',2000);setTimeout('showById(\'nieuweGetalGeheugen\')',2000);">CONTROLEER</div>
+          <div class="timeStuff button next" id="nieuweGetalGeheugen" onClick="hideTimeQuestions();hideByClassName('timeStuff');startGetalGeheugen();showById('startGetalGeheugen');showById('instellingGetalGeheugen');">NIEUWE SET</div>
+          <br><br>
+        </div>
+
+        <div class="play" id="gridStuff">
+          <div class="button special" id="subitizeSettingsButton" onClick="hideById('play');showById('settings');hideByClassName('settings');showById('subitizeSettings');">INSTELLINGEN</div>
+          <div class="button special" id="subitizeAgainButton" onClick="showGrid();hideById('subitizeNumber');showById('subitizeCheckButton');">NOG EENS</div>
+          <div class="button next" id="subitizeNextButton" onClick="startSubitizing();showGrid();showById('subitizeCheckButton');hideById('subitizeNumber')">VOLGENDE</div>
+          <br><br>
+          <div class="button check" id="subitizeCheckButton" onClick="makeVisibleById('grid');showById('subitizeNumber');hideById('subitizeCheckButton');">CONTROLEER</div>
+          <span id ="subitizeNumber"></span>
+          <br><br>
+          <div id="gridBorder"></span></div>
+    
+        </div>
+
+      </div>
+
+    </div>
+    <br><br>
+  </body>
+
+</html>

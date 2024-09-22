@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#logo {
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  margin: 1vh;
+}
+#logomath {
+  font-size: 5vh;
+}
+#logoii {
+  color:purple;
+  font-size: 4vh;
+}
+#logocom {
+  font-size: 3vh;
+}
+
+body {
+  width: 95%;
+  margin: auto;
+  font-family: sans-serif;
+  background-color: #EEF;
+  font-size: 3vh;
+  text-align: center;
+}
+
+#colorButtons {
+  float:left;
+  margin: 1vh;
+}
+
+.changeColorButton {
+  border: none;
+  width: 3vh;
+  height: 3vh;
+  display: inline-block;
+  cursor: pointer;
+}
+#changeColorDay {
+  background-color: white;
+  border-radius:0.5vh;
+}
+#changeColorNight {
+  background-color: black;
+  border-radius:0.5vh;
+}
+#changeColorStartup {
+  background-color: #EEF;
+  border-radius:0.5vh;
+}
+
+#languages {
+  float:right;
+  margin: 1vh;
+  font-size: 2.5vh;
+}
+
+a:link, a:visited {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    color: grey;
+}
+
+a:hover, a:active {
+    color: grey;
+}
+
+input[type="text"] {
+    height: 4vh;
+    width: 12vh;
+    font-size: 3vh;
+}
+
+.button {
+  display: inline-block;
+  font-size: 2.2vh;
+  text-align: center;
+  width: 25vh;
+  height: 3.1vh;
+  padding-top: 0.6vh;
+  border: 1px solid;
+  border-radius: 0.7vh;
+  margin: 0.1vh;
+  cursor: pointer;
+}
+.minibutton {
+  display: inline-block;
+  width: 4vh;
+  height: 2.4vh;
+  border: 1px solid;
+  border-radius: 0.5vh;
+}
+.special {
+  border-color:blue;
+  background-color: #DEF;
+}
+.basic {
+  border-color: orange;
+  background-color: #FFE;
+}
+.next, .prime {
+  border-color: green;
+  background-color: #EFE;
+}
+.check {
+  border-color:red;
+  background-color: #FDD;
+}
+.back {
+  border-color:grey;
+}
+.again {
+  border-color:yellow;
+  background-color: #FFE;
+}
+.hide {
+  border-color: grey;
+}
+
+#CinstellingTotaal, .instelOpsommming {
+  display:block;
+  text-align:left;
+  width: 85vh;
+  max-width: 95%;
+  margin: auto;
+}
+#instellingBreuken, .instelOpsommmingKlein {
+  display:block;
+  text-align:left;
+  width: 60vh;
+  max-width: 95%;
+  margin: auto;
+}
+
+#guideTimeQuest {
+  color: grey;
+}
+
+
+#gridBorder {
+    border: 1px solid grey;
+    display:block;
+    margin: auto;
+    padding: 0;
+    width: 57vmin;
+    height: 57vmin;
+}
+.formula {
+  font-size: 2vh;
+}
+
+#perDot, #startDot, #dotSize, #areaSize {
+  height: 3vh;
+  width: 6vh;
+  font-size: 2vh;
+}
+
+.frac {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 2vh;
+}
+.frac > span {
+    display: block;
+    padding-left: 0.1vh;
+}
+.frac span.bottom {
+    border-top: thin solid black;
+}
+.frac span.topWhite {
+    border-bottom: thin solid white;
+}
+.frac span.symbol {
+    display: none;
+}

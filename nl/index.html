@@ -23,7 +23,7 @@
     <div id="languages">
       <a href="../nl" lang="nl" hreflang="nl">nl</a>
       &nbsp &nbsp
-      <a href="./" lang="en" hreflang="en">en</a>
+      <a href="../" lang="en" hreflang="en">en</a>
     </div>
 
     <div id="logo"><span id="logomath">math</span><span id="logoii">ii</span><span id="logocom">.com</span></div>
@@ -49,11 +49,9 @@
       <div id="beschrijving">
         <br> Op <strong>mathii.com</strong> kun je zelf kiezen hoe groot de getallen zijn waarmee je rekent. De website genereert random oefeningen met jouw instellingen.
         <br>
-        <br> De vele combinaties van instellingen maken de website geschikt voor vele leerjaren.
+        <br> De vele combinaties van instellingen maken de website geschikt voor vele leerjaren. Je kunt <span style="color: gray; cursor: pointer" onClick="displaySettingsUrl()">jouw instellingen delen</span>.
         <br>
         <br> Op sommige websites moet je antwoorden intypen. Om je creatieve flow niet te belemmeren, kun je de antwoorden op mathii.com een voor een tevoorschijn klikken (maar ook allemaal in een keer).
-        <br>
-        <br> Heb je ook het onderdeel "GETALGEHEUGEN" al geprobeerd?
         <br>
         <br>
         <br>
@@ -167,7 +165,7 @@
           <br/><br/>
           A en B van <input id="userInputAftrekkenMin" type="text" value="10"> t/m <input id="userInputAftrekkenMax" type="text" value="1000">
           <br/><br/>
-          <input id="aftrekkenCnonNegative"type="checkbox"> C niet-negatief
+          <input id="aftrekkenCnonNegative" type="checkbox"> C niet-negatief
           <br/><br/>
           <div id="gaBlindAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('blindExercises');hideByClassName('blindNieuwe'); showById('nieuweAftrekkenBlind');makeBlind();">BLIND</div>
           <div id="gaAftrekken" class="button basic" onClick="makeExercisesAftrekken(); hideById('settings');showById('play');hideByClassName('play');showById('alsoTillFifteen');showById('exercises'); hideAnswers(); showButtons(); hideByClassName('nieuwe'); showById('nieuweAftrekken');hideById('aftrekken')">GA!</div>

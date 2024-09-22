@@ -1599,69 +1599,90 @@ function showButtons() {
 }
 
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-function setIfAvailable(setting) {
-  let value = urlParams.get(setting);
-  if (value) {
-    console.log(setting);
-    if (value == 'checked') {
-      document.getElementById(setting).checked = value;
-    } else {
-      document.getElementById(setting).value = value;
-
-    }
-  }
-
-}
+var settingKeys = [
+  "primeMin",
+  "primeMax",
+  "subitizeMin",
+  "subitizeMax",
+  "getalGeheugenAantalGetallen",
+  "getalGeheugenMax",
+  "getalGeheugenMin",
+  "breukenOptellenBDmin",
+  "breukenOptellenBDmax",
+  "breukenOptellenMin",
+  "breukenOptellenMax",
+  "breukenGeheelFilterenOptellen",
+  "breukenVereenvoudigen",
+  "geenGemixteBreuken",
+  "breukenDelenABCDmax",
+  "linkerGetalGeheel",
+  "rechterGetalKleinerEen",
+  "userInputOptellenMin",
+  "userInputOptellenMax",
+  "welBreuken",
+  "geenGemixteBreuken",
+  "welGroteGetallen",
+  "welKleineGetallen",
+  "kleineGetallenMin",
+  "kleineGetallenMax",
+  "groteGetallenMin",
+  "groteGetallenMax",
+  "userInputVermenigvuldigenAmin",
+  "userInputVermenigvuldigenAmax",
+  "userInputVermenigvuldigenBmin",
+  "userInputVermenigvuldigenBmax",
+  "delenAmin",
+  "delenAmax",
+  "delenBmin",
+  "delenBmax",
+  "delenCmin",
+  "delenCmax",
+  "delenCaantalDecimalen",
+  "delenCgeheel",
+  "delenCmetBreukRest",
+  "delenCmetDecimalen",
+  "delenCmetRest",
+  "gcdMax",
+  "lcmMin",
+  "lcmMax",
+  "delenAwaardenGebruiken",
+  "userInputAftrekkenMin",
+  "userInputAftrekkenMax",
+  "aftrekkenCnonNegative",
+  "perDot",
+  "startDot"
+];
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  setIfAvailable("primeMin");
-  setIfAvailable("primeMax");
-  setIfAvailable("subitizeMin");
-  setIfAvailable("subitizeMax");
-  setIfAvailable("getalGeheugenAantalGetallen");
-  setIfAvailable("getalGeheugenMax");
-  setIfAvailable("getalGeheugenMin");
-  setIfAvailable("breukenOptellenBDmin");
-  setIfAvailable("breukenOptellenBDmax");
-  setIfAvailable("breukenOptellenMin");
-  setIfAvailable("breukenOptellenMax");
-  setIfAvailable("breukenGeheelFilterenOptellen");
-  setIfAvailable("breukenVereenvoudigen");
-  setIfAvailable("geenGemixteBreuken");
-  setIfAvailable("breukenDelenABCDmax");
-  setIfAvailable("linkerGetalGeheel");
-  setIfAvailable("rechterGetalKleinerEen");
-  setIfAvailable("userInputOptellenMin");
-  setIfAvailable("userInputOptellenMax");
-  setIfAvailable("welBreuken");
-  setIfAvailable("geenGemixteBreuken");
-  setIfAvailable("welGroteGetallen");
-  setIfAvailable("welKleineGetallen");
-  setIfAvailable("kleineGetallenMin");
-  setIfAvailable("kleineGetallenMax");
-  setIfAvailable("groteGetallenMin");
-  setIfAvailable("groteGetallenMax");
-  setIfAvailable("userInputVermenigvuldigenAmin");
-  setIfAvailable("userInputVermenigvuldigenAmax");
-  setIfAvailable("userInputVermenigvuldigenBmin");
-  setIfAvailable("userInputVermenigvuldigenBmax");
-  setIfAvailable("delenAmin");
-  setIfAvailable("delenAmax");
-  setIfAvailable("delenBmin");
-  setIfAvailable("delenBmax");
-  setIfAvailable("delenCmin");
-  setIfAvailable("delenCmax");
-  setIfAvailable("delenCaantalDecimalen");
-  setIfAvailable("delenCgeheel");
-  setIfAvailable("delenCmetBreukRest");
-  setIfAvailable("delenCmetDecimalen");
-  setIfAvailable("gcdMax");
-  setIfAvailable("lcmMin");
-  setIfAvailable("lcmMax");
-  setIfAvailable("delenAwaardenGebruiken");
-  setIfAvailable("userInputAftrekkenMin");
-  setIfAvailable("userInputAftrekkenMax");
-  setIfAvailable("aftrekkenCnonNegative");
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  for (const settingKey of settingKeys) {
+    let value = urlParams.get(settingKey);
+    if (value) {
+      if (value == 'checked') {
+        document.getElementById(settingKey).checked = value;
+      } else if (value == 'unchecked') {
+        document.getElementById(settingKey).checked = '';
+      } else {
+        document.getElementById(settingKey).value = value;
+      }
+    }
+  }
 });
+
+function displaySettingsUrl() {
+  let url = window.location.href.split('?')[0].split('#')[0] + "?";
+  for (const settingKey of settingKeys) {
+    const element = document.getElementById(settingKey);
+    if (element.type == 'checkbox') {
+      url += settingKey + '=' + (element.checked ? 'checked' : 'unchecked') + '&';
+    } else if (element.type == 'radio') {
+      if (element.checked) {
+        url += settingKey + '=checked&';
+      }
+    } else {
+      url += settingKey + '=' + element.value + '&';
+    }
+  }
+  alert(url.slice(0, -1));
+}
